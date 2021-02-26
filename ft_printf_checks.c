@@ -101,7 +101,7 @@ static void 	check_spec(const char *format, t_pfs *pfs, t_convspec *funptr)
 	}
 }
 
-int 	printf_parser(const char *format, t_pfs *pfs)
+long 	printf_parser(const char *format, t_pfs *pfs)
 {
 	t_convspec	funptr;
 	int 		rv;

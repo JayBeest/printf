@@ -5,7 +5,7 @@
 
 char	*convert_s(t_pfs *pfs)
 {
-	char	temp;
+	char	*temp;
 	char	*rs;
 	int		len;
 
@@ -13,9 +13,10 @@ char	*convert_s(t_pfs *pfs)
 	len = ft_strlen(temp);
 	if (pfs->precision >= 0)
 		len = pfs->precision;
-	rs = make_field(pfs, len);
-	if (!rs)
-		return (NULL);
+	pfs->count = len;
+	if (pfs->width > pfs->count)
+		pfs->count = pfs->width;
+	rs = make_field(pfs);
 	if (pfs->min_flag == 1)
 		ft_memcpy(rs, temp, len);
 	else
@@ -29,9 +30,10 @@ char	*convert_c(t_pfs *pfs)
 	char *rs;
 
 	c = va_arg(pfs->ap, int);
-	rs = make_field(pfs, 1);
-	if (!rs)
-		return (NULL);
+	pfs->count = 1;
+	if (pfs->width > 1)
+		pfs->count = pfs->width;
+	rs = make_field(pfs);
 	if (pfs->min_flag == 1)
 		ft_memset(rs, c, 1);
 	else
@@ -44,23 +46,29 @@ char	*convert_x(t_pfs *pfs)
 	char	*rs;
 	char 	temprs[20];
 	size_t	num;
-	long	len;
 
 	num = va_arg(pfs->ap, unsigned);
 	ft_itoba_nomalloc(num, 16, temprs);
 	if (pfs->spec == 'x')
 		ft_strtolower(temprs);
-	len = ft_strlen(temprs);
-	if (pfs->precision > len)
-	{
-		add_zeros(pfs, &temprs, len, pfs->precision - len))
-		make_field(pfs, pfs->precision);
-	}
+	if (pfs->precision > -1)
+		pfs->zero_flag = 0;
+	pfs->vallen = ft_strlen(temprs);
+	pfs->count = pfs->vallen;
+	if (pfs->precision > pfs->vallen)
+		pfs->count = pfs->precision;
+	if (pfs->width > pfs->count)
+		pfs->count = pfs->width;
+	rs = make_field(pfs);
+	if (!rs)
+		return (NULL);
+	if (pfs->precision > pfs->vallen)
+		add_zeros(pfs, (char **) &temprs, pfs->precision - pfs->vallen);
+	if (pfs->min_flag == 1)
+		ft_memcpy(rs, temprs, pfs->vallen);
 	else
-	{
-		pfs->count += len;
-		make_field(pfs, len);
-	}
+		ft_memcpy(rs + pfs->count - pfs->vallen, temprs, pfs->vallen);
+	return (rs);
 }
 
 char	*convert_i(t_pfs *pfs)

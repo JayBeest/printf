@@ -1,14 +1,10 @@
 #include "ft_printf.h"
 #include <stdlib.h>
 
-char 	*make_field(t_pfs *pfs, int specsize)
+char 	*make_field(t_pfs *pfs)
 {
 	char *rs;
 
-	if (pfs->width > specsize)
-		pfs->count = pfs->width;
-	else
-		pfs->count = specsize;
 	rs = (char *)malloc(pfs->count);
 	if (!rs)
 		return (NULL);
@@ -19,18 +15,13 @@ char 	*make_field(t_pfs *pfs, int specsize)
 	return (rs);
 }
 
-int 			add_zeros(t_pfs *pfs, char **rs, long len, long zeros)
+long 			add_zeros(t_pfs *pfs, char **rs, long zeros)
 {
-	char	*ptr;
-	char 	*newrs;
+	char 	newrs[pfs->count];
 
-	ptr = *rs;
-	newrs = (char *)malloc(len + zeros);
-	if (!newrs)
-		return (NULL);
-	while (zeros > 0)
-	{
-
-	}
-
+	ft_memset(newrs, '0', zeros);
+	ft_memcpy(newrs + zeros, *rs, pfs->vallen);
+	*rs = newrs;
+	pfs->vallen += zeros;
+	return (zeros);
 }

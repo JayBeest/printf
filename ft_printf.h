@@ -21,11 +21,12 @@ typedef struct	s_pfs
 	int 		min_flag;
 	int			plus_flag;
 	int 		zero_flag;
-	int			width;
-	int 		precision;
-	int 		count;
+	long		width;
+	long 		precision;
+	long 		count;
 	char 		spec;
-	int 		nest_i;
+	long 		vallen;
+	long 		nest_i;
 }				t_pfs;
 
 typedef char *(*t_convspec)(t_pfs *);
@@ -33,11 +34,11 @@ typedef char *(*t_convspec)(t_pfs *);
 t_pfs 			*init_pfs(t_pfs *pfs, int reset);
 int				ft_printf(const char *format, ...);
 int				printf_converter(t_pfs *pfs, t_convspec funptr);
-int 			printf_parser(const char *s, t_pfs *pfs);
+long 			printf_parser(const char *s, t_pfs *pfs);
 
 //Utils
-char 			*make_field(t_pfs *pfs, int specsize);
-int 			add_zeros(t_pfs *pfs, char **rs, long len, long zeros);
+char 			*make_field(t_pfs *pfs);
+long 			add_zeros(t_pfs *pfs, char **rs, long zeros);
 
 
 // Libft
