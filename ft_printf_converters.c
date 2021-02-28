@@ -49,25 +49,25 @@ char	*convert_x(t_pfs *pfs)
 
 	num = va_arg(pfs->ap, unsigned);
 	ft_itoba_nomalloc(num, 16, temprs);
+	pfs->vallen = ft_strlen(temprs);
 	if (pfs->spec == 'x')
 		ft_strtolower(temprs);
-	if (pfs->precision > -1)
-		pfs->zero_flag = 0;
-	pfs->vallen = ft_strlen(temprs);
 	pfs->count = pfs->vallen;
-	if (pfs->precision > pfs->vallen)
-		pfs->count = pfs->precision;
-	if (pfs->width > pfs->count)
-		pfs->count = pfs->width;
 	rs = make_field(pfs);
 	if (!rs)
 		return (NULL);
-	if (pfs->precision > pfs->vallen)
-		add_zeros(pfs, (char **) &temprs, pfs->precision - pfs->vallen);
-	if (pfs->min_flag == 1)
-		ft_memcpy(rs, temprs, pfs->vallen);
-	else
+	if (pfs->min_flag && pfs->precision > pfs->vallen)
+	{
+		ft_memset(rs, '0', pfs->precision - pfs->vallen);
+		ft_memcpy(rs + pfs->precision - pfs->vallen, temprs, pfs->vallen);
+	}
+	else if (pfs->precision > pfs->vallen)
+	{
+		ft_memset(rs + pfs->count - pfs->precision, '0', pfs->precision - pfs->vallen);
 		ft_memcpy(rs + pfs->count - pfs->vallen, temprs, pfs->vallen);
+	}
+	else
+		ft_memcpy(rs, temprs, pfs->vallen);
 	return (rs);
 }
 

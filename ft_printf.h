@@ -38,7 +38,7 @@ long 			printf_parser(const char *s, t_pfs *pfs);
 
 //Utils
 char 			*make_field(t_pfs *pfs);
-long 			add_zeros(t_pfs *pfs, char **rs, long zeros);
+long 			add_zeros(t_pfs *pfs, char *rs, long zeros);
 
 
 // Libft
@@ -52,6 +52,7 @@ void			*ft_memcpy(void *dest, const void *src, size_t n);
 char			*ft_itoba(long long num, int base, int iscap);
 void			ft_itoba_nomalloc(long long num, int base, char *rs);
 void			ft_strtolower(char *str);
+void			ft_bzero(void *s, size_t n);
 
 
 

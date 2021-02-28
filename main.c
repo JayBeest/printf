@@ -55,25 +55,30 @@ int	main(void)
 //	printf("|-> rv: %d\n", rv);
 //	rv2 = ft_printf("yo %c%c%c%c%c", ca, cb, cc, cd, ce);
 //	printf("|-> rv: %d\n", rv2);
-	rv = ft_printf("ft_printf ->|%*.*s", ie, id, sb);
+	rv = printf("   printf ->|%*.*s", ie, id, sb);
 	printf("|-> rv: %d\n", rv);
-	rv2 = printf("   printf ->|%*.*s", ie, id, sb);
+	rv2 = ft_printf("ft_printf ->|%*.*s", ie, id, sb);
 	printf("|-> rv: %d\n", rv2);
 
-	rv = ft_printf("ft_printf ->|%04.2s", sa);
+	rv = printf("   printf ->|%04.2s", sa);
 	printf("|-> rv: %d\n", rv);
-	rv2 = printf("   printf ->|%04.2s", sa);
+	rv2 = ft_printf("ft_printf ->|%04.2s", sa);
 	printf("|-> rv: %d\n", rv2);
 
-
-	rv = ft_printf("ft_printf ->|%4.7x", ia);
+	rv = printf("   printf ->|aa%ca", cf);
 	printf("|-> rv: %d\n", rv);
-	rv2 = printf("   printf ->|%4.7x", ia);
+	rv2 = ft_printf("ft_printf ->|aa%ca", cf);
 	printf("|-> rv: %d\n", rv2);
 
-	rv = ft_printf("ft_printf ->|aa%ca", cf);
+	rv = printf("   printf ->|%4.7x", ia);
 	printf("|-> rv: %d\n", rv);
-	rv2 = printf("   printf ->|aa%ca", cf);
+	rv2 = ft_printf("ft_printf ->|%4.7x", ia);
 	printf("|-> rv: %d\n", rv2);
+
+	rv = printf("   printf ->|%14.7x", ia);
+	printf("|-> rv: %d\n", rv);
+	rv2 = ft_printf("ft_printf ->|%14.7x", ia);
+	printf("|-> rv: %d\n", rv2);
+
 	return (0);
 }
