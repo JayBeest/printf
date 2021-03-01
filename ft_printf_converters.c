@@ -49,10 +49,9 @@ char	*convert_x(t_pfs *pfs)
 
 	num = va_arg(pfs->ap, unsigned);
 	ft_itoba_nomalloc(num, 16, temprs);
-	pfs->vallen = ft_strlen(temprs);
 	if (pfs->spec == 'x')
 		ft_strtolower(temprs);
-	pfs->count = pfs->vallen;
+	pfs->vallen = ft_strlen(temprs);
 	rs = make_field(pfs);
 	if (!rs)
 		return (NULL);
@@ -65,6 +64,35 @@ char	*convert_x(t_pfs *pfs)
 	{
 		ft_memset(rs + pfs->count - pfs->precision, '0', pfs->precision - pfs->vallen);
 		ft_memcpy(rs + pfs->count - pfs->vallen, temprs, pfs->vallen);
+	}
+	else
+		ft_memcpy(rs, temprs, pfs->vallen);
+	return (rs);
+}
+
+char	*convert_p(t_pfs *pfs)
+{
+	char	*rs;
+	char 	temprs[20];
+	size_t	num;
+
+	num = va_arg(pfs->ap, unsigned);
+	ft_itoba_nomalloc(num, 16, temprs);
+	pfs->vallen = ft_strlen(temprs);
+	rs = make_field(pfs);
+	if (!rs)
+		return (NULL);
+	if (pfs->min_flag && pfs->precision > pfs->vallen)
+	{
+		add_pointer(rs);
+		ft_memset(rs + 2, '0', pfs->precision - pfs->vallen);
+		ft_memcpy(rs + 2 + pfs->precision - pfs->vallen, temprs, pfs->vallen);
+	}
+	else if (pfs->precision > pfs->vallen - 2)
+	{
+		add_pointer(rs + pfs->count - pfs->precision);
+		ft_memset(rs  + pfs->count - pfs->precision + 2, '0', pfs->precision - pfs->vallen);
+		ft_memcpy(rs  + pfs->count - pfs->vallen, temprs, pfs->vallen);
 	}
 	else
 		ft_memcpy(rs, temprs, pfs->vallen);

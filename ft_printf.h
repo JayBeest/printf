@@ -39,6 +39,8 @@ long 			printf_parser(const char *s, t_pfs *pfs);
 //Utils
 char 			*make_field(t_pfs *pfs);
 long 			add_zeros(t_pfs *pfs, char *rs, long zeros);
+void 			add_pointer(char *rs);
+
 
 
 // Libft
@@ -71,5 +73,6 @@ char 			*convert_c(t_pfs *pfs);
 char			*convert_x(t_pfs *pfs);
 char			*convert_i(t_pfs *pfs);
 char			*convert_u(t_pfs *pfs);
+char			*convert_p(t_pfs *pfs);
 
 #endif

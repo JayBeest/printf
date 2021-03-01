@@ -91,7 +91,9 @@ static void 	check_spec(const char *format, t_pfs *pfs, t_convspec *funptr)
 			*funptr = &convert_s;
 		else if (*format == 'c')
 			*funptr = &convert_c;
-		else if (*format == 'p' || *format == 'x' || *format == 'X')
+		else if (*format == 'p')
+			*funptr = &convert_p;
+		else if (*format == 'x' || *format == 'X')
 			*funptr = &convert_x;
 		else if (*format == 'd' || *format == 'i')
 			*funptr = &convert_i;
