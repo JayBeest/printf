@@ -81,7 +81,6 @@ int		printf_converter(t_pfs *pfs)
             ['X'] = &convert_x
     };
 	char *converted;
-
 	converted = funptr[pfs->spec](pfs);
 	if (!converted)
 		return (-1);
@@ -95,6 +94,7 @@ int 	ft_printf(const char *format, ...)
 	t_pfs		*pfs;
 	int			rv;
 
+	pfs = NULL;
 	pfs = init_pfs(pfs, 0);
 	if (!pfs)
 		return (-1);
