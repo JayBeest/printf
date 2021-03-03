@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-static int 	check_flags(const char *s, t_pfs *pfs)
+static void 	check_flags(const char *s, t_pfs *pfs)
 {
 	int		i;
 
@@ -22,12 +22,10 @@ static int 	check_flags(const char *s, t_pfs *pfs)
 			break ;
 		i++;
 	}
-//	printf("check_flags return i: %d\n", i);
 	pfs->nest_i += i;
-	return (i);
 }
 
-static int 	check_width(const char *format, t_pfs *pfs)
+static void 	check_width(const char *format, t_pfs *pfs)
 {
 	int		i;
 
@@ -50,12 +48,10 @@ static int 	check_width(const char *format, t_pfs *pfs)
 		else
 			break ;
 	}
-//	printf("check_width return i: %d\n", i);
 	pfs->nest_i += i;
-	return (i);
 }
 
-static int 	check_precision(const char *s, t_pfs *pfs)
+static void 	check_precision(const char *s, t_pfs *pfs)
 {
 	int i;
 
@@ -79,14 +75,13 @@ static int 	check_precision(const char *s, t_pfs *pfs)
 			pfs->nest_i++;
 		}
 	}
-	return (1);
 }
 
-static void 	check_spec(const char *format, t_pfs *pfs)
-{
-	if (ft_strchr("sciupdxX", *format))
-	{
-		pfs->spec = *format;
+//static void 	check_spec(const char *format, t_pfs *pfs)
+//{
+//	if (ft_strchr("sciupdxX", *format))
+//	{
+//		pfs->spec = *format;
 //		if (*format == 's')
 //			*funptr = &convert_s;
 //		else if (*format == 'c')
@@ -99,43 +94,24 @@ static void 	check_spec(const char *format, t_pfs *pfs)
 //			*funptr = &convert_i;
 //		else if (*format == 'u')
 //			*funptr = &convert_u;
-		pfs->nest_i++;
-	}
-}
-
-void 	pop_funptr(t_convspec *funptr)
-{
-
-}
+//		pfs->nest_i++;
+//	}
+//}
 
 long 	printf_parser(const char *format, t_pfs *pfs)
 {
-	int 					rv;
-	static const t_convspec	funptr[255] = {
-		['s'] = &convert_s,
-		['c'] = &convert_c,
-		['i'] = &convert_i,
-		['u'] = &convert_u,
-		['p'] = &convert_p,
-		['d'] = &convert_i,
-		['x'] = &convert_x,
-		['X'] = &convert_x
-	};
 	pfs = init_pfs(pfs, 1);
 	if (!pfs)
 		return (-1);
-	rv = check_flags(format + pfs->nest_i, pfs);
-	if (rv >= 0)
-		rv = check_width(format + pfs->nest_i, pfs);
-	else
-		return (-1);
-	if (rv >= 0)
-		rv = check_precision(format + pfs->nest_i, pfs);
-	if (rv >= 0)
-		check_spec(format + pfs->nest_i, pfs);
-	else
-		return (-1);
-	printf_converter(pfs, funptr);
+	check_flags(format + pfs->nest_i, pfs);
+	check_width(format + pfs->nest_i, pfs);
+    check_precision(format + pfs->nest_i, pfs);
+    if (ft_strchr("sciupdxX", *(format + pfs->nest_i)))
+        pfs->spec = *(format + pfs->nest_i);
+    else
+        return (-1);
+    pfs->nest_i++;
+	printf_converter(pfs);
 	return (pfs->nest_i);
 }
 

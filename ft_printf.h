@@ -35,7 +35,7 @@ typedef char *(*t_convspec)(t_pfs *);
 
 t_pfs 			*init_pfs(t_pfs *pfs, int reset);
 int				ft_printf(const char *format, ...) __attribute__((format(printf, 1, 2)));
-int				printf_converter(t_pfs *pfs, t_convspec *funptr);
+int				printf_converter(t_pfs *pfs);
 long 			printf_parser(const char *s, t_pfs *pfs);
 
 //Utils
@@ -63,10 +63,10 @@ void			ft_bzero(void *s, size_t n);
 
 // Checks
 
-static int 		check_flags(const char *s, t_pfs *pfs);
-static int 		check_width(const char *s, t_pfs *pfs);
-static int		check_precision(const char *s, t_pfs *pfs);
-static void		check_spec(const char *s, t_pfs *pfs);
+//static void 	check_flags(const char *s, t_pfs *pfs);
+//static void 	check_width(const char *s, t_pfs *pfs);
+//static void		check_precision(const char *s, t_pfs *pfs);
+//static void		check_spec(const char *s, t_pfs *pfs);
 
 // Converters
 
