@@ -4,15 +4,16 @@
 char 	*make_field(t_pfs *pfs)
 {
 	char *rs;
-	if (pfs->spec == 'p')
-	{
-		pfs->precision += 2;
-	}
+
 	pfs->count = pfs->vallen;
 	if (pfs->precision > pfs->vallen)
+	{
 		pfs->count = pfs->precision;
+	}
 	if (pfs->width > pfs->count)
 		pfs->count = pfs->width;
+	if (pfs->spec == 'p' && pfs->width < pfs->vallen + 1)
+		pfs->count += 2;
 //	if (pfs->spec == 'p')
 //	{
 //		if (pfs->precision > 1)
@@ -26,6 +27,10 @@ char 	*make_field(t_pfs *pfs)
 			ft_memset(rs, '0', pfs->count);
 	else
 			ft_memset(rs, ' ', pfs->count);
+	if (pfs->spec == 'p' && pfs->min_flag)
+		add_pointer(rs);
+	else if (pfs->spec == 'p')
+		add_pointer(rs + pfs->count - pfs->vallen - 2);
 	return (rs);
 }
 

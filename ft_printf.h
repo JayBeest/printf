@@ -29,10 +29,12 @@ typedef struct	s_pfs
 	long 		nest_i;
 }				t_pfs;
 
+#define CONVERSION_CHAR "sciupdxX%"
+
 typedef char *(*t_convspec)(t_pfs *);
 
 t_pfs 			*init_pfs(t_pfs *pfs, int reset);
-int				ft_printf(const char *format, ...);
+int				ft_printf(const char *format, ...) __attribute__((format(printf, 1, 2)));
 int				printf_converter(t_pfs *pfs, t_convspec funptr);
 long 			printf_parser(const char *s, t_pfs *pfs);
 
@@ -53,7 +55,7 @@ int 			ft_strlen(const char *s);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
 char			*ft_itoba(long long num, int base, int iscap);
 void			ft_itoba_nomalloc(long long num, int base, char *rs);
-void			ft_strtolower(char *str);
+void			ft_strtoupper(char *str);
 void			ft_bzero(void *s, size_t n);
 
 
