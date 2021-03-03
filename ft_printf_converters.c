@@ -7,20 +7,16 @@ char	*convert_s(t_pfs *pfs)
 {
 	char	*temp;
 	char	*rs;
-	int		len;
 
 	temp = va_arg(pfs->ap, char *);
-	len = ft_strlen(temp);
-	if (pfs->precision >= 0)
-		len = pfs->precision;
-	pfs->count = len;
-	if (pfs->width > pfs->count)
-		pfs->count = pfs->width;
+	pfs->vallen = ft_strlen(temp);
+	if (pfs->precision > 0)
+		pfs->vallen = pfs->precision;
 	rs = make_field(pfs);
-	if (pfs->min_flag == 1)
-		ft_memcpy(rs, temp, len);
+	if (pfs->min_flag)
+		ft_memcpy(rs, temp, pfs->vallen);
 	else
-		ft_memcpy(rs + pfs->count - len, temp, len);
+		ft_memcpy(rs + pfs->count - pfs->vallen, temp, pfs->vallen);
 	return (rs);
 }
 
