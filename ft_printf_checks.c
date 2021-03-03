@@ -82,32 +82,45 @@ static int 	check_precision(const char *s, t_pfs *pfs)
 	return (1);
 }
 
-static void 	check_spec(const char *format, t_pfs *pfs, t_convspec *funptr)
+static void 	check_spec(const char *format, t_pfs *pfs)
 {
 	if (ft_strchr("sciupdxX", *format))
 	{
 		pfs->spec = *format;
-		if (*format == 's')
-			*funptr = &convert_s;
-		else if (*format == 'c')
-			*funptr = &convert_c;
-		else if (*format == 'p')
-			*funptr = &convert_p;
-		else if (*format == 'x' || *format == 'X')
-			*funptr = &convert_x;
-		else if (*format == 'd' || *format == 'i')
-			*funptr = &convert_i;
-		else if (*format == 'u')
-			*funptr = &convert_u;
+//		if (*format == 's')
+//			*funptr = &convert_s;
+//		else if (*format == 'c')
+//			*funptr = &convert_c;
+//		else if (*format == 'p')
+//			*funptr = &convert_p;
+//		else if (*format == 'x' || *format == 'X')
+//			*funptr = &convert_x;
+//		else if (*format == 'd' || *format == 'i')
+//			*funptr = &convert_i;
+//		else if (*format == 'u')
+//			*funptr = &convert_u;
 		pfs->nest_i++;
 	}
 }
 
+void 	pop_funptr(t_convspec *funptr)
+{
+
+}
+
 long 	printf_parser(const char *format, t_pfs *pfs)
 {
-	t_convspec	funptr;
-	int 		rv;
-
+	int 					rv;
+	static const t_convspec	funptr[255] = {
+		['s'] = &convert_s,
+		['c'] = &convert_c,
+		['i'] = &convert_i,
+		['u'] = &convert_u,
+		['p'] = &convert_p,
+		['d'] = &convert_i,
+		['x'] = &convert_x,
+		['X'] = &convert_x
+	};
 	pfs = init_pfs(pfs, 1);
 	if (!pfs)
 		return (-1);
@@ -119,14 +132,10 @@ long 	printf_parser(const char *format, t_pfs *pfs)
 	if (rv >= 0)
 		rv = check_precision(format + pfs->nest_i, pfs);
 	if (rv >= 0)
-		check_spec(format + pfs->nest_i, pfs, &funptr);
+		check_spec(format + pfs->nest_i, pfs);
 	else
-		{
-		printf("okdan error\n");
 		return (-1);
-	}
 	printf_converter(pfs, funptr);
-//	printf("returnvalue parser nest_i: %d\n", pfs->nest_i);
 	return (pfs->nest_i);
 }
 

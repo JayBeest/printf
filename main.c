@@ -39,6 +39,7 @@ int	main(void)
 	int	ic = 3;
 	int	id = 4;
 	int	ie = 12;
+	char *str = NULL;
 
 
 //	printf("%c%c%c%c%c\n%s\n%s\n%s\n%s\n%s\n%d%d%d%d%d|\n", ca, cb, cc, cd, ce, sa, sb, sc, sd, se, ia, ib, ic, id, ie);
@@ -84,36 +85,39 @@ int	main(void)
 //	printf("|-> rv: %d\n", rv2-13);
 
 
-	rv = printf("   printf ->|%14p", 1234567);
-	printf("|-> rv: %d\n", rv-13);
-	rv2 = ft_printf("ft_printf ->|%14p", 1234567);
-	printf("|-> rv: %d\n", rv2-13);
-
-	rv = printf("   printf ->|%2p", ia);
-	printf("|-> rv: %d\n", rv-13);
-	rv2 = ft_printf("ft_printf ->|%2p", ia);
-	printf("|-> rv: %d\n", rv2-13);
-
-	rv = printf("   printf ->|%p", ip);
-	printf("|-> rv: %d\n", rv-13);
-	rv2 = ft_printf("ft_printf ->|%p", ip);
-	printf("|-> rv: %d\n", rv2-13);
-
-	rv = printf("   printf ->|%p", ip);
-	printf("|-> rv: %d\n", rv-13);
-	rv2 = ft_printf("ft_printf ->|%p", ip);
-	printf("|-> rv: %d\n", rv2-13);
-
-	rv = printf("   printf ->|%015p", ia);
-	printf("|-> rv: %d\n", rv-13);
-	rv2 = ft_printf("ft_printf ->|%015p", ia);
-	printf("|-> rv: %d\n", rv2-13);
-
-
+//	rv = printf("   printf ->|%14p", 1234567);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|%14p", 1234567);
+//	printf("|-> rv: %d\n", rv2-13);
+//
+//	rv = printf("   printf ->|%2p", ia);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|%2p", ia);
+//	printf("|-> rv: %d\n", rv2-13);
+//
+//	rv = printf("   printf ->|%p", ip);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|%p", ip);
+//	printf("|-> rv: %d\n", rv2-13);
+//
+//	rv = printf("   printf ->|%p", ip);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|%p", ip);
+//	printf("|-> rv: %d\n", rv2-13);
+//
+//	rv = printf("   printf ->|%015p", ia);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|%015p", ia);
+//	printf("|-> rv: %d\n", rv2-13);
 
 
 
-
+	printf(" ft_printf \t%i\n", ft_printf("|\t%.*s\t\t|", 1,""));
+	printf(" printf \t%i\n", printf("|\t%.*s\t\t|", 1,""));
+	printf(" ft_printf \t%i\n", ft_printf("|\t%.s\t|", "hello"));
+	printf(" printf \t%i\n", printf("|\t%.s\t|", "hello"));
+	printf(" ft_printf \t%i\n", ft_printf("|\t%.s\t|", str));
+	printf(" printf \t%i\n", printf("|\t%.s\t|", str));
 
 	return (0);
 }

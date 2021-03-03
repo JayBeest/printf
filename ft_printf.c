@@ -68,11 +68,10 @@ static int	write_count(const char *s, t_pfs *pfs)
 	return (count);
 }
 
-int		printf_converter(t_pfs *pfs, t_convspec funptr)
+int		printf_converter(t_pfs *pfs, t_convspec *funptr)
 {
 	char *converted;
-
-	converted = funptr(pfs);
+	converted = funptr[pfs->spec](pfs);
 	if (!converted)
 		return (-1);
 	write(1, converted, pfs->count);
