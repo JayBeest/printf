@@ -72,15 +72,16 @@ int		printf_converter(t_pfs *pfs)
 {
     static const t_convspec	funptr[255] = {
             ['s'] = &convert_s,
-            ['c'] = &convert_c,
+            ['c'] = convert_c,
             ['i'] = &convert_i,
-            ['u'] = &convert_u,
+            ['u'] = convert_u,
             ['p'] = &convert_p,
-            ['d'] = &convert_i,
+            ['d'] = convert_i,
             ['x'] = &convert_x,
-            ['X'] = &convert_x
+            ['X'] = convert_x
     };
 	char *converted;
+
 	converted = funptr[pfs->spec](pfs);
 	if (!converted)
 		return (-1);
