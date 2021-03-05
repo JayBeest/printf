@@ -79,9 +79,9 @@ int	main(void)
 	rv2 = ft_printf("ft_printf ->|%4.7x", ia);
 	printf("|-> rv: %d\n", rv2-13);
 
-	rv = printf("   printf ->|%-14.7x", ia);
+	rv = printf("   printf ->|%14.7x", ia);
 	printf("|-> rv: %d\n", rv-13);
-	rv2 = ft_printf("ft_printf ->|%-14.7x", ia);
+	rv2 = ft_printf("ft_printf ->|%14.7x", ia);
 	printf("|-> rv: %d\n", rv2-13);
 
 
