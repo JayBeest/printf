@@ -34,13 +34,13 @@ typedef struct	s_pfs
 typedef char *(*t_convspec)(t_pfs *);
 
 t_pfs 			*init_pfs(t_pfs *pfs, int reset);
-int				ft_printf(const char *format, ...) __attribute__((format(printf, 1, 2)));
+int				ft_printf(const char *format, ...);
 int				printf_converter(t_pfs *pfs);
 long 			printf_parser(const char *s, t_pfs *pfs);
 
 //Utils
 char 			*make_field(t_pfs *pfs);
-long 			add_zeros(t_pfs *pfs, char *rs, long zeros);
+//long 			add_zeros(t_pfs *pfs, char *rs, long zeros);
 void 			add_pointer(char *rs);
 
 

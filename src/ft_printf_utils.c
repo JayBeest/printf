@@ -1,10 +1,22 @@
 #include "ft_printf.h"
 #include <stdlib.h>
 
+void 	set_field_precision(t_pfs *pfs)
+{
+	if (pfs->precision > pfs->vallen && pfs->width <= pfs->precision && !pfs->min_flag)
+	{
+		pfs->width = pfs->precision;
+		pfs->zero_flag = 1;
+	}
+
+}
+
 char 	*make_field(t_pfs *pfs)
 {
 	char *rs;
 
+	if (pfs->spec != 's')
+		set_field_precision(pfs);
 	pfs->count = pfs->vallen;
 	if (pfs->precision > pfs->vallen && pfs->vallen)
 		pfs->count = pfs->precision;
@@ -25,6 +37,8 @@ char 	*make_field(t_pfs *pfs)
 		add_pointer(rs + pfs->count - pfs->vallen - 2);
 	return (rs);
 }
+
+
 
 void 	add_pointer(char *rs)
 {
