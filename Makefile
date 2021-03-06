@@ -1,20 +1,34 @@
 NAME = libftprintf.a
 LIB = libft
 PRINTF_FILES = ft_printf.c ft_printf_utils.c ft_printf_converters.c ft_printf_checks.c #main.c
-LIBS = ./libft/libft.a
-HEADER_FILES = ./src/ft_printf.h
+LIBFT = ./libft/libft.a
+HEADER_FILES = ft_printf.h
 SRC_PATH = ./src/
 O_FILES = $(PRINTF_FILES:%.c=$(SRC_PATH)%.o)
 CFLAGS =  -g #-Wall -Wextra -Werror -g -fsanitize=address
 
 all: $(NAME)
 
+#$(NAME): $(O_FILES)
+#	$(MAKE) -C ./libft
+#	cp $(LIBS) $@
+#	ar -r $@ $^
+
 $(NAME): $(O_FILES)
 	$(MAKE) -C ./libft
-	ar -rc $@ $(LIBS) $^
+	cp $(LIBFT) $(NAME)
+	$(AR) -r $@ $^
 
 %.o: %.c $(HEADER_FILES) 
-	clang -c $(CFLAGS) -o $@ $<
+	$(CC) -c $(CFLAGS) -o $@ $<
+
+test: $(NAME)
+	clear
+	$(CC) $(CFLAGS) $(NAME) main.c
+	./a.out
+
+clion: $(NAME)
+	$(CC) $(CFLAGS) $(NAME) main.c
 
 clean: 
 	rm -f $(O_FILES)
@@ -25,3 +39,5 @@ fclean: clean
 	$(MAKE) -C ./libft fclean
 
 re: fclean all
+
+.PHONY: all clean fclean re test clion

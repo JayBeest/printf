@@ -56,6 +56,8 @@ test: re
 
 so: libft.so
 
+printflibft:
+
 $(NAME): $(O_FILES)
 	ar -rc $@ $^
 
