@@ -16,7 +16,7 @@ all: $(NAME)
 
 $(NAME): $(O_FILES)
 	$(MAKE) -C ./libft
-	cp $(LIBFT) $(NAME)
+	cp $(LIBFT) $@
 	$(AR) -r $@ $^
 
 %.o: %.c $(HEADER_FILES) 
