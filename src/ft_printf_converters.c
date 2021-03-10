@@ -76,7 +76,8 @@ char	*convert_p(t_pfs *pfs)
 	char 	temprs[20];
 	size_t	num;
 
-	num = va_arg(pfs->ap, unsigned);
+	num = va_arg(pfs->ap, unsigned long);
+	//printf("CHECK num value: %zu\n", num);
 	ft_itoba_nomalloc(num, 16, temprs);
 	pfs->vallen = ft_strlen(temprs);
 	rs = make_field(pfs);
