@@ -1,7 +1,5 @@
 # include "ft_printf.h"
 
-#include <stdio.h>
-
 static void 	check_flags(const char *s, t_pfs *pfs)
 {
 	int		i;

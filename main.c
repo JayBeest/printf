@@ -6,11 +6,11 @@
 /*   By: jcorneli <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/06 23:29:14 by jcorneli      #+#    #+#                 */
-/*   Updated: 2021/02/18 12:57:18 by jcorneli      ########   odam.nl         */
+/*   Updated: 2021/03/05 16:48:11 by jcorneli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "src/ft_printf.h"
 #include <stdio.h>
 
 int	main(void)
@@ -59,30 +59,30 @@ int	main(void)
 //	rv2 = ft_printf("ft_printf ->|%c%c%c%c%c", ca, cb, cc, cd, ce);
 //	printf("|-> rv: %d\n", rv2-13);
 //
-//	rv = printf("   printf ->|%*.*s", ie, id, sb);
-//	printf("|-> rv: %d\n", rv-13);
-//	rv2 = ft_printf("ft_printf ->|%*.*s", ie, id, sb);
-//	printf("|-> rv: %d\n", rv2-13);
-//
-//	rv = printf("   printf ->|%04.2s", sa);
-//	printf("|-> rv: %d\n", rv-13);
-//	rv2 = ft_printf("ft_printf ->|%04.2s", sa);
-//	printf("|-> rv: %d\n", rv2-13);
-//
-//	rv = printf("   printf ->|aa%ca", cf);
-//	printf("|-> rv: %d\n", rv-13);
-//	rv2 = ft_printf("ft_printf ->|aa%ca", cf);
-//	printf("|-> rv: %d\n", rv2-13);
+	rv = printf("   printf ->|%*.*s", ie, id, sb);
+	printf("|-> rv: %d\n", rv-13);
+	rv2 = ft_printf("ft_printf ->|%*.*s", ie, id, sb);
+	printf("|-> rv: %d\n", rv2-13);
 
-//	rv = printf("   printf ->|%4.7x", ia);
-//	printf("|-> rv: %d\n", rv-13);
-//	rv2 = ft_printf("ft_printf ->|%4.7x", ia);
-//	printf("|-> rv: %d\n", rv2-13);
-//
-//	rv = printf("   printf ->|%14.7x", ia);
-//	printf("|-> rv: %d\n", rv-13);
-//	rv2 = ft_printf("ft_printf ->|%14.7x", ia);
-//	printf("|-> rv: %d\n", rv2-13);
+	rv = printf("   printf ->|%04.2s", sa);
+	printf("|-> rv: %d\n", rv-13);
+	rv2 = ft_printf("ft_printf ->|%04.2s", sa);
+	printf("|-> rv: %d\n", rv2-13);
+
+	rv = printf("   printf ->|aa%ca", cf);
+	printf("|-> rv: %d\n", rv-13);
+	rv2 = ft_printf("ft_printf ->|aa%ca", cf);
+	printf("|-> rv: %d\n", rv2-13);
+
+	rv = printf("   printf ->|%4.7x", ia);
+	printf("|-> rv: %d\n", rv-13);
+	rv2 = ft_printf("ft_printf ->|%4.7x", ia);
+	printf("|-> rv: %d\n", rv2-13);
+
+	rv = printf("   printf ->|%14.7x", ia);
+	printf("|-> rv: %d\n", rv-13);
+	rv2 = ft_printf("ft_printf ->|%14.7x", ia);
+	printf("|-> rv: %d\n", rv2-13);
 
 
 //	rv = printf("   printf ->|%14p", 1234567);
