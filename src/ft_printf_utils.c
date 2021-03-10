@@ -8,6 +8,8 @@ void 	set_field_precision(t_pfs *pfs)
 		pfs->width = pfs->precision;
 		pfs->zero_flag = 1;
 	}
+	if (pfs->spec == 'p')
+	    pfs->precision = -1;
 
 }
 
@@ -15,7 +17,7 @@ char 	*make_field(t_pfs *pfs)
 {
 	char *rs;
 
-	if (pfs->spec != 's')
+	if (pfs->spec != 's' && pfs->spec != 'p')
 		set_field_precision(pfs);
 	pfs->count = pfs->vallen;
 	if (pfs->precision > pfs->vallen && pfs->vallen)

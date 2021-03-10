@@ -9,11 +9,6 @@ CFLAGS =  -g #-Wall -Wextra -Werror -g -fsanitize=address
 
 all: $(NAME)
 
-#$(NAME): $(O_FILES)
-#	$(MAKE) -C ./libft
-#	cp $(LIBS) $@
-#	ar -r $@ $^
-
 $(NAME): $(O_FILES)
 	$(MAKE) -C ./libft
 	cp $(LIBFT) $@
@@ -24,11 +19,13 @@ $(NAME): $(O_FILES)
 
 test: $(NAME)
 	clear
-	$(CC) $(CFLAGS) $(NAME) main.c
+	$(CC) $(CFLAGS) $(NAME) pf_main.c
 	./a.out
 
 clion: $(NAME)
-	$(CC) $(CFLAGS) $(NAME) main.c
+	$(CC) $(CFLAGS) $(NAME) pf_main.c
+
+
 
 clean: 
 	rm -f $(O_FILES)
