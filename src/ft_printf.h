@@ -42,6 +42,8 @@ long 			printf_parser(const char *s, t_pfs *pfs);
 char 			*make_field(t_pfs *pfs);
 //long 			add_zeros(t_pfs *pfs, char *rs, long zeros);
 void 			add_pointer(char *rs);
+void			paste_min_flag(t_pfs *pfs, char *rs, char *temprs);
+void			paste_nomin_flag(t_pfs *pfs, char *rs, char *temprs);
 
 
 

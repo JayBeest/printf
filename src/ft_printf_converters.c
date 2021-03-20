@@ -55,18 +55,10 @@ char	*convert_x(t_pfs *pfs)
 	rs = make_field(pfs);
 	if (!rs)
 		return (NULL);
-	if (pfs->min_flag && pfs->precision > pfs->vallen)
-	{
-		ft_memset(rs, '0', pfs->precision - pfs->vallen);
-		ft_memcpy(rs + pfs->precision - pfs->vallen, temprs, pfs->vallen);
-	}
-	else if (pfs->precision > pfs->vallen)
-	{
-		ft_memset(rs + pfs->count - pfs->precision, '0', pfs->precision - pfs->vallen);
-		ft_memcpy(rs + pfs->count - pfs->vallen, temprs, pfs->vallen);
-	}
+	if (pfs->min_flag)
+		paste_min_flag(pfs, rs, temprs);
 	else
-		ft_memcpy(rs, temprs, pfs->vallen);
+		paste_nomin_flag(pfs, rs, temprs);
 	return (rs);
 }
 
