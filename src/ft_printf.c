@@ -6,7 +6,7 @@
 /*   By: jcorneli <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 16:25:25 by jcorneli      #+#    #+#                 */
-/*   Updated: 2021/02/10 14:24:38 by jcorneli      ########   odam.nl         */
+/*   Updated: 2021/03/22 22:41:06 by jcorneli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	printf_converter(t_pfs *pfs)
 	};
 	char					*converted;
 
-	converted = funptr[pfs->spec](pfs);
+	converted = funptr[(int)pfs->spec](pfs);
 	if (!converted)
 		return (0);
 	write(1, converted, pfs->count);
