@@ -17,7 +17,7 @@ static int	islower(int c)
 	return (0);
 }
 
-int			ft_toupper(int c)
+int	ft_toupper(int c)
 {
 	if (islower(c))
 		return (c - 32);

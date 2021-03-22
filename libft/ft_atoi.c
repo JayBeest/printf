@@ -15,7 +15,7 @@
 
 static int	isspace(int c)
 {
-	if (c == ' ' || c == '\f' || c == '\n'\
+	if (c == ' ' || c == '\f' || c == '\n'
 		|| c == '\r' || c == '\t' || c == '\v')
 		return (1);
 	return (0);
@@ -48,7 +48,7 @@ static char	*cleanstr(const char *ptr, int *multip)
 	return ((char *)ptr);
 }
 
-int			ft_atoi(const char *ptr)
+int	ft_atoi(const char *ptr)
 {
 	int			multip;
 	long long	retv;

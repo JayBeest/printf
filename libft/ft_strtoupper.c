@@ -20,4 +20,3 @@ void	ft_strtoupper(char *str)
 		str++;
 	}
 }
-
