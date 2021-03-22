@@ -26,6 +26,7 @@ typedef struct	s_pfs
 	long 		count;
 	char 		spec;
 	long 		vallen;
+	int			isneg;
 	long 		nest_i;
 }				t_pfs;
 
@@ -41,9 +42,10 @@ long 			printf_parser(const char *s, t_pfs *pfs);
 //Utils
 char 			*make_field(t_pfs *pfs);
 //long 			add_zeros(t_pfs *pfs, char *rs, long zeros);
-void 			add_pointer(char *rs);
+void 			add_pointer(char *rs, t_pfs *pfs);
 void			paste_min_flag(t_pfs *pfs, char *rs, char *temprs);
 void			paste_nomin_flag(t_pfs *pfs, char *rs, char *temprs);
+void 			add_pointer_space(t_pfs *pfs);
 
 
 

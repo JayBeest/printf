@@ -24,6 +24,7 @@ t_pfs *init_pfs(t_pfs *pfs, int reset)
 		pfs->count = 0;
 		pfs->nest_i = 0;
 		pfs->vallen = 0;
+		pfs->isneg = 0;
 		pfs->min_flag = 0;
 		pfs->plus_flag = 0;
 		pfs->zero_flag = 0;
@@ -73,12 +74,13 @@ int		printf_converter(t_pfs *pfs)
     static const t_convspec	funptr[255] = {
             ['s'] = &convert_s,
             ['c'] = convert_c,
-            ['i'] = &convert_i,
-            ['u'] = convert_u,
-            ['p'] = &convert_p,
-            ['d'] = convert_i,
-            ['x'] = &convert_x,
-            ['X'] = convert_x
+            ['%'] = &convert_c,
+            ['i'] = convert_i,
+            ['u'] = &convert_u,
+            ['p'] = convert_p,
+            ['d'] = &convert_i,
+            ['x'] = convert_x,
+            ['X'] = &convert_x
     };
 	char *converted;
 

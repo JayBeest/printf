@@ -59,30 +59,30 @@ int	main(void)
 //	rv2 = ft_printf("ft_printf ->|%c%c%c%c%c", ca, cb, cc, cd, ce);
 //	printf("|-> rv: %d\n", rv2-13);
 //
-	rv = printf("   printf ->|%*.*s", ie, id, sb);
-	printf("|-> rv: %d\n", rv-13);
-	rv2 = ft_printf("ft_printf ->|%*.*s", ie, id, sb);
-	printf("|-> rv: %d\n", rv2-13);
-
-	rv = printf("   printf ->|%04.2s", sa);
-	printf("|-> rv: %d\n", rv-13);
-	rv2 = ft_printf("ft_printf ->|%04.2s", sa);
-	printf("|-> rv: %d\n", rv2-13);
-
-	rv = printf("   printf ->|aa%ca", cf);
-	printf("|-> rv: %d\n", rv-13);
-	rv2 = ft_printf("ft_printf ->|aa%ca", cf);
-	printf("|-> rv: %d\n", rv2-13);
-
-	rv = printf("   printf ->|%4.7x", ia);
-	printf("|-> rv: %d\n", rv-13);
-	rv2 = ft_printf("ft_printf ->|%4.7x", ia);
-	printf("|-> rv: %d\n", rv2-13);
-
-	rv = printf("   printf ->|%14.7x", ia);
-	printf("|-> rv: %d\n", rv-13);
-	rv2 = ft_printf("ft_printf ->|%14.7x", ia);
-	printf("|-> rv: %d\n", rv2-13);
+//	rv = printf("   printf ->|%*.*s", ie, id, sb);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|%*.*s", ie, id, sb);
+//	printf("|-> rv: %d\n", rv2-13);
+//
+//	rv = printf("   printf ->|%04.2s", sa);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|%04.2s", sa);
+//	printf("|-> rv: %d\n", rv2-13);
+//
+//	rv = printf("   printf ->|aa%ca", cf);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|aa%ca", cf);
+//	printf("|-> rv: %d\n", rv2-13);
+//
+//	rv = printf("   printf ->|%4.7x", ia);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|%4.7x", ia);
+//	printf("|-> rv: %d\n", rv2-13);
+//
+//	rv = printf("   printf ->|%14.7x", ia);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|%14.7x", ia);
+//	printf("|-> rv: %d\n", rv2-13);
 
 
 //	rv = printf("   printf ->|%14p", 1234567);
@@ -112,12 +112,95 @@ int	main(void)
 
 
 
-	printf(" ft_printf \t%i\n", ft_printf("|\t%.*s\t\t|", 1,""));
-	printf(" printf \t%i\n", printf("|\t%.*s\t\t|", 1,""));
-	printf(" ft_printf \t%i\n", ft_printf("|\t%.s\t|", "hello"));
-	printf(" printf \t%i\n", printf("|\t%.s\t|", "hello"));
-	printf(" ft_printf \t%i\n", ft_printf("|\t%.s\t|", str));
-	printf(" printf \t%i\n", printf("|\t%.s\t|", str));
+//	printf(" ft_printf \t%i\n", ft_printf("|\t%.*s\t\t|", 1,""));
+//	printf(" printf \t%i\n", printf("|\t%.*s\t\t|", 1,""));
+//	printf(" ft_printf \t%i\n", ft_printf("|\t%.s\t|", "hello"));
+//	printf(" printf \t%i\n", printf("|\t%.s\t|", "hello"));
+//	printf(" ft_printf \t%i\n", ft_printf("|\t%.s\t|", str));
+//	printf(" printf \t%i\n", printf("|\t%.s\t|", str));
+//
+//	rv = printf("   printf ->|%08.3x", 8375);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|%08.3x", 8375);
+//	printf("|-> rv: %d\n", rv2-13);
+//
+//	rv = printf("   printf ->|%7.4d", -3);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|%7.4d", -3);
+//	printf("|-> rv: %d\n", rv2-13);
+
+
+
+//	rv = printf("   printf ->|this %d number", -123);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|this %d number", -123);
+//	printf("|-> rv: %d\n", rv2-13);
+//
+//	rv = printf("   printf ->|this %12d number", -123);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|this %12d number", -123);
+//	printf("|-> rv: %d\n", rv2-13);
+//
+//	rv = printf("   printf ->|this %012d number", -123);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|this %012d number", -123);
+//	printf("|-> rv: %d\n", rv2-13);
+//
+//	rv = printf("   printf ->|this %-012d number", -123);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|this %-012d number", -123);
+//	printf("|-> rv: %d\n", rv2-13);
+//
+//	rv = printf("   printf ->|this %-012.5d number", -123);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|this %-012.5d number", -123);
+//	printf("|-> rv: %d\n", rv2-13);
+//
+//	rv = printf("   printf ->|this %-012.2d number", -123);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|this %-012.2d number", -123);
+//	printf("|-> rv: %d\n", rv2-13);
+//
+//	rv = printf("   printf ->|this %012.5d number", -123);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|this %012.5d number", -123);
+//	printf("|-> rv: %d\n", rv2-13);
+
+//	rv = printf("   printf ->|this %012.2d number", -123);
+//	printf("|-> rv: %d\n", rv-13);
+//	rv2 = ft_printf("ft_printf ->|this %012.2d number", -123);
+//	printf("|-> rv: %d\n", rv2-13);
+
+//	rv = printf("%-8.d", 0);
+//	printf("|-> rv: %d\n", rv);
+//	rv2 = ft_printf("%-8.d", 0);
+//	printf("|-> rv: %d\n", rv2);
+
+	rv = printf("%2.d", 0);
+	printf("|-> rv: %d\n", rv);
+	rv2 = ft_printf("%2.d", 0);
+	printf("|-> rv: %d\n", rv2);
+
+	rv = printf("%*s", -32, "abc");
+	printf("|-> rv: %d\n", rv);
+	rv2 = ft_printf("%*s", -32, "abc");
+	printf("|-> rv: %d\n", rv2);
+
+	rv = printf("%% *.5i 42 == |% *.5i|			", 4, 42);
+	printf("|-> rv: %d\n", rv);
+	rv2 = ft_printf("%% *.5i 42 == |% *.5i|			", 4, 42);
+	printf("|-> rv: %d\n", rv2);
+
+	rv = printf("%4.p", ia);
+	printf("|-> rv: %d\n", rv);
+	rv2 = ft_printf("%4.p", ia);
+	printf("|-> rv: %d\n", rv2);
+
+	rv = printf("%p", NULL);
+	printf("|-> rv: %d\n", rv);
+	rv2 = ft_printf("%p", NULL);
+	printf("|-> rv: %d\n", rv2);
+
 
 	return (0);
 }

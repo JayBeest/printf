@@ -19,11 +19,11 @@ $(NAME): $(O_FILES)
 
 test: $(NAME)
 	clear
-	$(CC) $(CFLAGS) $(NAME) pf_main.c
+	$(CC) $(CFLAGS) $(NAME) main.c
 	./a.out
 
 clion: $(NAME)
-	$(CC) $(CFLAGS) $(NAME) pf_main.c
+	$(CC) $(CFLAGS) $(NAME) main.c
 
 
 

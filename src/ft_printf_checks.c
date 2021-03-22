@@ -5,7 +5,7 @@ static void 	check_flags(const char *s, t_pfs *pfs)
 	int		i;
 
 	i = 0;
-	while (!ft_strchr("scpdiuxX", s[i]))
+	while (!ft_strchr("scpdiuxX%", s[i]))
 	{
 		if (s[i] == '-')
 		{
@@ -28,11 +28,16 @@ static void 	check_width(const char *format, t_pfs *pfs)
 	int		i;
 
 	i = 0;
-	while (!ft_strchr("scpdiuxX", format[i]))
+	while (!ft_strchr("scpdiuxX%", format[i]))
 	{
 		if (format[i] == '*')
 		{
 			pfs->width = va_arg(pfs->ap, int);
+			if (pfs->width < 0)
+			{
+				pfs->width *= -1;
+				pfs->min_flag = 1;
+			}
 			i++;
 			break;
 		}
@@ -104,7 +109,7 @@ long 	printf_parser(const char *format, t_pfs *pfs)
 	check_flags(format + pfs->nest_i, pfs);
 	check_width(format + pfs->nest_i, pfs);
     check_precision(format + pfs->nest_i, pfs);
-    if (ft_strchr("sciupdxX", *(format + pfs->nest_i)))
+    if (ft_strchr("sciupdxX%", *(format + pfs->nest_i)))
         pfs->spec = *(format + pfs->nest_i);
     else
         return (-1);

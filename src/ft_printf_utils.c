@@ -1,36 +1,51 @@
 #include "ft_printf.h"
 #include <stdlib.h>
 
-void 	add_pointer(char *rs)
+void 	add_pointer(char *rs, t_pfs *pfs)
 {
-	rs[0] = '0';
-	rs[1] = 'x';
+	if (pfs->min_flag)
+	{
+		rs[0] = '0';
+		rs[1] = 'x';
+	}
+	else
+	{
+		rs[pfs->count - pfs->vallen - 2] = '0';
+		rs[pfs->count - pfs->vallen - 1] = 'x';
+	}
 }
 
-void 	set_field_precision(t_pfs *pfs)
+void 	add_pointer_space(t_pfs *pfs)
 {
-	if (pfs->precision > pfs->vallen && pfs->width <= pfs->precision && !pfs->min_flag)
-	{
-		pfs->width = pfs->precision;
-		pfs->zero_flag = 1;
-	}
-	if (pfs->spec == 'p')
-		pfs->precision = -1;
+	int		space;
+
+	if (pfs->vallen == 0)
+		pfs->vallen = 1;
+	space = pfs->width - pfs->vallen;
+	if (space > 0 && space < 3)
+		pfs->count += space;
+	space = pfs->width - pfs->vallen;
+	if (pfs->width < pfs->vallen && space == 1)
+		pfs->count++;
+	else if (space < 1)
+		pfs->count += 2;
 }
 
 char 	*make_field(t_pfs *pfs)
 {
 	char *rs;
 
-	if (pfs->spec != 's' && pfs->spec != 'p')
-		set_field_precision(pfs);
 	pfs->count = pfs->vallen;
-	if (pfs->precision > pfs->vallen && pfs->vallen)
+	if (pfs->precision > pfs->vallen && pfs->vallen && pfs->spec != 's')
 		pfs->count = pfs->precision;
 	if (pfs->width > pfs->count)
 		pfs->count = pfs->width;
-	if (pfs->spec == 'p' && pfs->width < pfs->vallen + 1)
-		pfs->count += 2;
+	if (pfs->spec == 'p')
+		add_pointer_space(pfs);
+	if (pfs->precision > -1 && pfs->spec != 's')
+		pfs->zero_flag = 0;
+	if (pfs->isneg && pfs->width <= pfs->vallen)// && pfs->count == pfs->precision)
+		pfs->count++;
 	rs = (char *)malloc(pfs->count);
 	if (!rs)
 		return (NULL);
@@ -38,36 +53,58 @@ char 	*make_field(t_pfs *pfs)
 		ft_memset(rs, '0', pfs->count);
 	else
 		ft_memset(rs, ' ', pfs->count);
-	if (pfs->spec == 'p' && pfs->min_flag)
-		add_pointer(rs);
-	else if (pfs->spec == 'p')
-		add_pointer(rs + pfs->count - pfs->vallen - 2);
+	if (pfs->spec == 'p')
+		add_pointer(rs, pfs);
 	return (rs);
 }
 
 void	paste_min_flag(t_pfs *pfs, char *rs, char *temprs)
 {
-	if (pfs->precision > pfs->vallen)
+	if (pfs->precision == 0 && *temprs == '0')
+		*temprs = ' ';
+	if (pfs->isneg)
 	{
-		ft_memset(rs, '0', pfs->precision - pfs->vallen);
-		ft_memcpy(rs + pfs->precision - pfs->vallen, temprs, pfs->vallen);
+		*rs = '-';
+		if (pfs->precision > pfs->vallen)
+		{
+			ft_memset(rs + 1, '0', pfs->precision - pfs->vallen);
+			ft_memcpy(rs + pfs->precision - pfs->vallen + 1, temprs, pfs->vallen);
+		}
+		else
+			ft_memcpy(rs + 1, temprs, pfs->vallen);
 	}
-//	else if (pfs->precision > pfs->vallen)
-//	{
-//		ft_memset(rs + pfs->count - pfs->precision, '0', pfs->precision - pfs->vallen);
-//		ft_memcpy(rs + pfs->count - pfs->vallen, temprs, pfs->vallen);
-//	}
 	else
-		ft_memcpy(rs, temprs, pfs->vallen);
+	{
+		if (pfs->precision > pfs->vallen)
+		{
+			ft_memset(rs, '0', pfs->precision - pfs->vallen);
+			ft_memcpy(rs + pfs->precision - pfs->vallen, temprs, pfs->vallen);
+		}
+		else
+			ft_memcpy(rs, temprs, pfs->vallen);
+	}
 }
 
 void	paste_nomin_flag(t_pfs *pfs, char *rs, char *temprs)
 {
-	if (pfs->precision > pfs->vallen)
+	if (pfs->precision == 0 && *temprs == '0')
+		*temprs = ' ';
+	if (pfs->isneg)
 	{
-		ft_memset(rs + pfs->count - pfs->precision, '0', pfs->precision - pfs->vallen);
+		if (pfs->precision > pfs->vallen)
+			*(rs + pfs->count - pfs->precision - 1) = '-';
+		else if (pfs->width > pfs->vallen && pfs->zero_flag)
+			*rs = '-';
+		else
+			*(rs + pfs->count - pfs->vallen - 1) = '-';
+		if (pfs->precision > pfs->vallen)
+			ft_memset(rs + pfs->count - pfs->precision,'0', pfs->precision - pfs->vallen + 1);
 		ft_memcpy(rs + pfs->count - pfs->vallen, temprs, pfs->vallen);
 	}
 	else
+	{
+		if (pfs->precision > pfs->vallen)
+			ft_memset(rs + pfs->count - pfs->precision, '0', pfs->precision - pfs->vallen);
 		ft_memcpy(rs + pfs->count - pfs->vallen, temprs, pfs->vallen);
+	}
 }
