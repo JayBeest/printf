@@ -59,6 +59,29 @@ int	printf_converter(t_pfs *pfs)
 	return (1);
 }
 
+int	printf_parser(const char *format, t_pfs *pfs)
+{
+	pfs = init_pfs(pfs, 1);
+	if (!pfs)
+		return (-1);
+	check_flags(format + pfs->nest_i, pfs);
+	check_width(format + pfs->nest_i, pfs);
+	if (pfs->star_width && pfs->width < 0)
+	{
+		pfs->width *= -1;
+		pfs->min_flag = 1;
+	}
+	check_precision(format + pfs->nest_i, pfs);
+	if (ft_strchr(CONV_SPEC, *(format + pfs->nest_i)))
+		pfs->spec = *(format + pfs->nest_i);
+	else
+		return (-1);
+	pfs->nest_i++;
+	if (printf_converter(pfs))
+		return (pfs->nest_i);
+	return (-1);
+}
+
 static int	write_count(const char *s, t_pfs *pfs)
 {
 	int	i;

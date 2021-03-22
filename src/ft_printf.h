@@ -46,13 +46,10 @@ t_pfs	*init_pfs(t_pfs *pfs, int reset);
 int		printf_converter(t_pfs *pfs);
 int		printf_parser(const char *s, t_pfs *pfs);
 
-// Utils
-
-char	*make_field(t_pfs *pfs);
-void	add_pointer(char *rs, t_pfs *pfs);
-void	paste_min_flag(t_pfs *pfs, char *rs, char *temprs);
-void	paste_nomin_flag(t_pfs *pfs, char *rs, char *temprs);
-void	add_pointer_space(t_pfs *pfs);
+// Parsers
+void	check_flags(const char *s, t_pfs *pfs);
+void	check_width(const char *format, t_pfs *pfs);
+void	check_precision(const char *s, t_pfs *pfs);
 
 // Converters
 
@@ -62,6 +59,14 @@ char	*convert_x(t_pfs *pfs);
 char	*convert_i(t_pfs *pfs);
 char	*convert_u(t_pfs *pfs);
 char	*convert_p(t_pfs *pfs);
+
+// Utils
+
+char	*make_field(t_pfs *pfs);
+void	add_pointer(char *rs, t_pfs *pfs);
+void	paste_min_flag(t_pfs *pfs, char *rs, char *temprs);
+void	paste_nomin_flag(t_pfs *pfs, char *rs, char *temprs);
+void	add_pointer_space(t_pfs *pfs);
 
 // Libft
 

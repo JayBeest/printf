@@ -13,6 +13,8 @@ char	*convert_c(t_pfs *pfs)
 	if (pfs->width > 1)
 		pfs->count = pfs->width;
 	rs = make_field(pfs);
+	if (!rs)
+		return (NULL);
 	if (pfs->min_flag == 1)
 		ft_memset(rs, c, 1);
 	else

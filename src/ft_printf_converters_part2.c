@@ -14,6 +14,8 @@ char	*convert_s(t_pfs *pfs)
 	if (pfs->precision >= 0 && pfs->vallen && pfs->vallen >= pfs->precision)
 		pfs->vallen = pfs->precision;
 	rs = make_field(pfs);
+	if (!rs)
+		return (NULL);
 	if (pfs->min_flag)
 		ft_memcpy(rs, temp, pfs->vallen);
 	else
