@@ -50,7 +50,7 @@ static void 	check_width(const char *format, t_pfs *pfs)
 	pfs->nest_i += i;
 }
 
-static void 	check_precision(const char *s, t_pfs *pfs)
+static void	check_precision(const char *s, t_pfs *pfs)
 {
 	int	i;
 
@@ -76,7 +76,7 @@ static void 	check_precision(const char *s, t_pfs *pfs)
 	}
 }
 
-long 	printf_parser(const char *format, t_pfs *pfs)
+int	printf_parser(const char *format, t_pfs *pfs)
 {
 	pfs = init_pfs(pfs, 1);
 	if (!pfs)
@@ -94,6 +94,7 @@ long 	printf_parser(const char *format, t_pfs *pfs)
 	else
 		return (-1);
 	pfs->nest_i++;
-	printf_converter(pfs);
-	return (pfs->nest_i);
+	if (printf_converter(pfs))
+		return (pfs->nest_i);
+	return (-1);
 }

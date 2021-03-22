@@ -26,14 +26,14 @@ typedef struct s_pfs
 	int		min_flag;
 	int		plus_flag;
 	int		zero_flag;
-	long	width;
+	int		width;
 	int		star_width;
-	long	precision;
-	long	count;
+	int		precision;
+	int		count;
 	char	spec;
-	long	vallen;
+	int		vallen;
 	int		isneg;
-	long	nest_i;
+	int		nest_i;
 }			t_pfs;
 
 // Function pointer type
@@ -44,7 +44,7 @@ typedef char *(*t_convspec)(t_pfs *);
 
 t_pfs	*init_pfs(t_pfs *pfs, int reset);
 int		printf_converter(t_pfs *pfs);
-long	printf_parser(const char *s, t_pfs *pfs);
+int		printf_parser(const char *s, t_pfs *pfs);
 
 // Utils
 

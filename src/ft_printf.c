@@ -36,6 +36,29 @@ t_pfs	*init_pfs(t_pfs *pfs, int reset)
 	return (NULL);
 }
 
+int	printf_converter(t_pfs *pfs)
+{
+	static const t_convspec	funptr[255] = {
+			['s'] = &convert_s,
+			['c'] = convert_c,
+			['%'] = &convert_c,
+			['i'] = convert_i,
+			['u'] = &convert_u,
+			['p'] = convert_p,
+			['d'] = &convert_i,
+			['x'] = convert_x,
+			['X'] = &convert_x
+	};
+	char					*converted;
+
+	converted = funptr[pfs->spec](pfs);
+	if (!converted)
+		return (0);
+	write(1, converted, pfs->count);
+	free(converted);
+	return (1);
+}
+
 static int	write_count(const char *s, t_pfs *pfs)
 {
 	int	i;
@@ -62,29 +85,6 @@ static int	write_count(const char *s, t_pfs *pfs)
 		i++;
 	}
 	return (count);
-}
-
-int	printf_converter(t_pfs *pfs)
-{
-	static const t_convspec	funptr[255] = {
-			['s'] = &convert_s,
-			['c'] = convert_c,
-			['%'] = &convert_c,
-			['i'] = convert_i,
-			['u'] = &convert_u,
-			['p'] = convert_p,
-			['d'] = &convert_i,
-			['x'] = convert_x,
-			['X'] = &convert_x
-	};
-	char					*converted;
-
-	converted = funptr[pfs->spec](pfs);
-	if (!converted)
-		return (-1);
-	write(1, converted, pfs->count);
-	free(converted);
-	return (0);
 }
 
 int 	ft_printf(const char *format, ...)

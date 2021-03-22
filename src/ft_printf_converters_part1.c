@@ -43,31 +43,24 @@ char	*convert_x(t_pfs *pfs)
 	return (rs);
 }
 
-char	*convert_p(t_pfs *pfs)
+char	*convert_u(t_pfs *pfs)
 {
 	char	*rs;
-	char	temprs[20];
+	char	temprs[30];
 	size_t	num;
 
-	pfs->precision = -1;
-	num = va_arg(pfs->ap, unsigned long);
-	ft_itoba_nomalloc(num, 16, temprs);
+	num = va_arg(pfs->ap, unsigned);
+	ft_itoba_nomalloc(num, 10, temprs);
 	pfs->vallen = ft_strlen(temprs);
 	rs = make_field(pfs);
 	if (!rs)
 		return (NULL);
-	if (pfs->min_flag && pfs->width > pfs->vallen + 2)
-	{
-		ft_memset(rs + 2, ' ', pfs->width - pfs->vallen);
-		ft_memcpy(rs + 2, temprs, pfs->vallen);
-	}
-	else if (pfs->width > pfs->vallen + 2)
-	{
-		ft_memset(rs + pfs->count - pfs->vallen, ' ', pfs->vallen);
-		ft_memcpy(rs + pfs->count - pfs->vallen, temprs, pfs->vallen);
-	}
+	if (pfs->precision == 0 && pfs->width < 1 && num == 0)
+		pfs->count = 0;
+	if (pfs->min_flag)
+		paste_min_flag(pfs, rs, temprs);
 	else
-		ft_memcpy(rs + 2, temprs, pfs->vallen);
+		paste_nomin_flag(pfs, rs, temprs);
 	return (rs);
 }
 
@@ -99,23 +92,30 @@ char	*convert_i(t_pfs *pfs)
 	return (rs);
 }
 
-char	*convert_u(t_pfs *pfs)
+char	*convert_p(t_pfs *pfs)
 {
 	char	*rs;
-	char	temprs[30];
+	char	temprs[20];
 	size_t	num;
 
-	num = va_arg(pfs->ap, unsigned);
-	ft_itoba_nomalloc(num, 10, temprs);
+	pfs->precision = -1;
+	num = va_arg(pfs->ap, unsigned long);
+	ft_itoba_nomalloc(num, 16, temprs);
 	pfs->vallen = ft_strlen(temprs);
 	rs = make_field(pfs);
 	if (!rs)
 		return (NULL);
-	if (pfs->precision == 0 && pfs->width < 1 && num == 0)
-		pfs->count = 0;
-	if (pfs->min_flag)
-		paste_min_flag(pfs, rs, temprs);
+	if (pfs->min_flag && pfs->width > pfs->vallen + 2)
+	{
+		ft_memset(rs + 2, ' ', pfs->width - pfs->vallen);
+		ft_memcpy(rs + 2, temprs, pfs->vallen);
+	}
+	else if (pfs->width > pfs->vallen + 2)
+	{
+		ft_memset(rs + pfs->count - pfs->vallen, ' ', pfs->vallen);
+		ft_memcpy(rs + pfs->count - pfs->vallen, temprs, pfs->vallen);
+	}
 	else
-		paste_nomin_flag(pfs, rs, temprs);
+		ft_memcpy(rs + 2, temprs, pfs->vallen);
 	return (rs);
 }
