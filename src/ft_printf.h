@@ -22,6 +22,7 @@ typedef struct	s_pfs
 	int			plus_flag;
 	int 		zero_flag;
 	long		width;
+	int 		star_width;
 	long 		precision;
 	long 		count;
 	char 		spec;
@@ -41,26 +42,20 @@ long 			printf_parser(const char *s, t_pfs *pfs);
 
 //Utils
 char 			*make_field(t_pfs *pfs);
-//long 			add_zeros(t_pfs *pfs, char *rs, long zeros);
 void 			add_pointer(char *rs, t_pfs *pfs);
 void			paste_min_flag(t_pfs *pfs, char *rs, char *temprs);
 void			paste_nomin_flag(t_pfs *pfs, char *rs, char *temprs);
 void 			add_pointer_space(t_pfs *pfs);
 
-
-
 // Libft
-char			*ft_strchr(const char *s, int c);
 int				ft_atoi(const char *ptr);
 int 			ft_isdigit(int c);
-void 			ft_putchar_fd(char c, int fd);
-void			*ft_memset(void *s, int c, size_t len);
-int 			ft_strlen(const char *s);
-void			*ft_memcpy(void *dest, const void *src, size_t n);
-char			*ft_itoba(long long num, int base, int iscap);
 void			ft_itoba_nomalloc(long long num, int base, char *rs);
+void			*ft_memcpy(void *dest, const void *src, size_t n);
+void			*ft_memset(void *s, int c, size_t len);
+char			*ft_strchr(const char *s, int c);
+int 			ft_strlen(const char *s);
 void			ft_strtoupper(char *str);
-void			ft_bzero(void *s, size_t n);
 
 
 

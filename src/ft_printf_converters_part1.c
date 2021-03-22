@@ -1,33 +1,9 @@
 #include "ft_printf.h"
-#include <stdlib.h>
-
-#include <stdio.h>
-
-char	*convert_s(t_pfs *pfs)
-{
-	char	*temp;
-	char	*rs;
-	char	*nulltemp;
-
-	nulltemp = "(null)";
-	temp = va_arg(pfs->ap, char *);
-	if (!temp)
-		temp = nulltemp;
-	pfs->vallen = ft_strlen(temp);
-	if (pfs->precision >= 0 && pfs->vallen && pfs->vallen >= pfs->precision)
-		pfs->vallen = pfs->precision;
-	rs = make_field(pfs);
-	if (pfs->min_flag)
-		ft_memcpy(rs, temp, pfs->vallen);
-	else
-		ft_memcpy(rs + pfs->count - pfs->vallen, temp, pfs->vallen);
-	return (rs);
-}
 
 char	*convert_c(t_pfs *pfs)
 {
-	char c;
-	char *rs;
+	char	c;
+	char	*rs;
 
 	if (pfs->spec != '%')
 		c = va_arg(pfs->ap, int);
@@ -47,7 +23,7 @@ char	*convert_c(t_pfs *pfs)
 char	*convert_x(t_pfs *pfs)
 {
 	char	*rs;
-	char 	temprs[20];
+	char	temprs[20];
 	size_t	num;
 
 	num = va_arg(pfs->ap, unsigned);
@@ -70,7 +46,7 @@ char	*convert_x(t_pfs *pfs)
 char	*convert_p(t_pfs *pfs)
 {
 	char	*rs;
-	char 	temprs[20];
+	char	temprs[20];
 	size_t	num;
 
 	pfs->precision = -1;
@@ -87,8 +63,8 @@ char	*convert_p(t_pfs *pfs)
 	}
 	else if (pfs->width > pfs->vallen + 2)
 	{
-		ft_memset(rs  + pfs->count - pfs->vallen, ' ', pfs->vallen);
-		ft_memcpy(rs  + pfs->count - pfs->vallen, temprs, pfs->vallen);
+		ft_memset(rs + pfs->count - pfs->vallen, ' ', pfs->vallen);
+		ft_memcpy(rs + pfs->count - pfs->vallen, temprs, pfs->vallen);
 	}
 	else
 		ft_memcpy(rs + 2, temprs, pfs->vallen);
@@ -98,7 +74,7 @@ char	*convert_p(t_pfs *pfs)
 char	*convert_i(t_pfs *pfs)
 {
 	char	*rs;
-	char 	temprs[30];
+	char	temprs[30];
 	long	num;
 
 	if (pfs->zero_flag && pfs->min_flag)
@@ -126,7 +102,7 @@ char	*convert_i(t_pfs *pfs)
 char	*convert_u(t_pfs *pfs)
 {
 	char	*rs;
-	char 	temprs[30];
+	char	temprs[30];
 	size_t	num;
 
 	num = va_arg(pfs->ap, unsigned);

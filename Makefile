@@ -1,6 +1,11 @@
 NAME = libftprintf.a
 LIB = libft
-PRINTF_FILES = ft_printf.c ft_printf_utils.c ft_printf_converters.c ft_printf_checks.c #main.c
+PRINTF_FILES =	ft_printf.c \
+				ft_printf_utils.c \
+				ft_printf_converters_part1.c \
+				ft_printf_converters_part2.c \
+				ft_printf_checks.c \
+				#main.c
 LIBFT = ./libft/libft.a
 HEADER_FILES = ft_printf.h
 SRC_PATH = ./src/

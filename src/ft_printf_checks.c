@@ -1,4 +1,4 @@
-# include "ft_printf.h"
+#include "ft_printf.h"
 
 static void 	check_flags(const char *s, t_pfs *pfs)
 {
@@ -33,13 +33,9 @@ static void 	check_width(const char *format, t_pfs *pfs)
 		if (format[i] == '*')
 		{
 			pfs->width = va_arg(pfs->ap, int);
-			if (pfs->width < 0)
-			{
-				pfs->width *= -1;
-				pfs->min_flag = 1;
-			}
+			pfs->star_width = 1;
 			i++;
-			break;
+			break ;
 		}
 		else if (ft_isdigit(*format))
 		{
@@ -56,7 +52,7 @@ static void 	check_width(const char *format, t_pfs *pfs)
 
 static void 	check_precision(const char *s, t_pfs *pfs)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (*s == '.')
@@ -80,27 +76,6 @@ static void 	check_precision(const char *s, t_pfs *pfs)
 	}
 }
 
-//static void 	check_spec(const char *format, t_pfs *pfs)
-//{
-//	if (ft_strchr("sciupdxX", *format))
-//	{
-//		pfs->spec = *format;
-//		if (*format == 's')
-//			*funptr = &convert_s;
-//		else if (*format == 'c')
-//			*funptr = &convert_c;
-//		else if (*format == 'p')
-//			*funptr = &convert_p;
-//		else if (*format == 'x' || *format == 'X')
-//			*funptr = &convert_x;
-//		else if (*format == 'd' || *format == 'i')
-//			*funptr = &convert_i;
-//		else if (*format == 'u')
-//			*funptr = &convert_u;
-//		pfs->nest_i++;
-//	}
-//}
-
 long 	printf_parser(const char *format, t_pfs *pfs)
 {
 	pfs = init_pfs(pfs, 1);
@@ -108,13 +83,17 @@ long 	printf_parser(const char *format, t_pfs *pfs)
 		return (-1);
 	check_flags(format + pfs->nest_i, pfs);
 	check_width(format + pfs->nest_i, pfs);
-    check_precision(format + pfs->nest_i, pfs);
-    if (ft_strchr("sciupdxX%", *(format + pfs->nest_i)))
-        pfs->spec = *(format + pfs->nest_i);
-    else
-        return (-1);
-    pfs->nest_i++;
+	if (pfs->star_width && pfs->width < 0)
+	{
+		pfs->width *= -1;
+		pfs->min_flag = 1;
+	}
+	check_precision(format + pfs->nest_i, pfs);
+	if (ft_strchr("sciupdxX%", *(format + pfs->nest_i)))
+		pfs->spec = *(format + pfs->nest_i);
+	else
+		return (-1);
+	pfs->nest_i++;
 	printf_converter(pfs);
 	return (pfs->nest_i);
 }
-

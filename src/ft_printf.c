@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-t_pfs *init_pfs(t_pfs *pfs, int reset)
+t_pfs	*init_pfs(t_pfs *pfs, int reset)
 {
 	if (!reset)
 		pfs = (t_pfs *) malloc(sizeof(t_pfs));
@@ -30,6 +30,7 @@ t_pfs *init_pfs(t_pfs *pfs, int reset)
 		pfs->zero_flag = 0;
 		pfs->precision = -1;
 		pfs->width = -1;
+		pfs->star_width = 0;
 		return (pfs);
 	}
 	return (NULL);
@@ -45,13 +46,7 @@ static int	write_count(const char *s, t_pfs *pfs)
 	count = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] == '%' && s[i + 1] == '%')
-		{
-			ft_putchar_fd('%', 1);
-			count++;
-			i++;
-		}
-		else if (s[i] == '%')
+		if (s[i] == '%')
 		{
 			nest_i = printf_parser(s + i + 1, pfs);
 			if (nest_i == -1)
@@ -69,20 +64,20 @@ static int	write_count(const char *s, t_pfs *pfs)
 	return (count);
 }
 
-int		printf_converter(t_pfs *pfs)
+int	printf_converter(t_pfs *pfs)
 {
-    static const t_convspec	funptr[255] = {
-            ['s'] = &convert_s,
-            ['c'] = convert_c,
-            ['%'] = &convert_c,
-            ['i'] = convert_i,
-            ['u'] = &convert_u,
-            ['p'] = convert_p,
-            ['d'] = &convert_i,
-            ['x'] = convert_x,
-            ['X'] = &convert_x
-    };
-	char *converted;
+	static const t_convspec	funptr[255] = {
+			['s'] = &convert_s,
+			['c'] = convert_c,
+			['%'] = &convert_c,
+			['i'] = convert_i,
+			['u'] = &convert_u,
+			['p'] = convert_p,
+			['d'] = &convert_i,
+			['x'] = convert_x,
+			['X'] = &convert_x
+	};
+	char					*converted;
 
 	converted = funptr[pfs->spec](pfs);
 	if (!converted)
