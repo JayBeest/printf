@@ -13,6 +13,8 @@
 #include "src/ft_printf.h"
 #include <stdio.h>
 
+int 	ft_printf(const char *format, ...);
+
 int	main(void)
 {
 	int 	rv;
@@ -199,6 +201,11 @@ int	main(void)
 	rv = printf("%p", NULL);
 	printf("|-> rv: %d\n", rv);
 	rv2 = ft_printf("%p", NULL);
+	printf("|-> rv: %d\n", rv2);
+
+	rv = printf("%*p 42 == |%s|\n", -20, NULL, NULL);
+	printf("|-> rv: %d\n", rv);
+	rv2 = ft_printf("%*p 42 == |%s|\n", -20, NULL, NULL);
 	printf("|-> rv: %d\n", rv2);
 
 

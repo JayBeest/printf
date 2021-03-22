@@ -19,7 +19,7 @@ $(NAME): $(O_FILES)
 	cp $(LIBFT) $@
 	$(AR) -r $@ $^
 
-%.o: %.c $(HEADER_FILES) 
+%.o: %.c $(HEADER_FILES)
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 test: $(NAME)
@@ -30,9 +30,7 @@ test: $(NAME)
 clion: $(NAME)
 	$(CC) $(CFLAGS) $(NAME) main.c
 
-
-
-clean: 
+clean:
 	rm -f $(O_FILES)
 	$(MAKE) -C ./libft clean
 
