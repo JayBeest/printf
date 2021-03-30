@@ -24,8 +24,6 @@ void 	check_flags(const char *s, t_pfs *pfs)
 			pfs->min_flag = 1;
 			pfs->zero_flag = 0;
 		}
-		else if (s[i] == '+')
-			pfs->plus_flag = 1;
 		else if (s[i] == '0' && !pfs->min_flag)
 			pfs->zero_flag = 1;
 		else
