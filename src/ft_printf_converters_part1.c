@@ -6,7 +6,7 @@
 /*   By: jcorneli <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 16:25:25 by jcorneli      #+#    #+#                 */
-/*   Updated: 2021/03/22 22:43:33 by jcorneli      ########   odam.nl         */
+/*   Updated: 2021/03/24 15:03:58 by jcorneli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ char	*convert_c(t_pfs *pfs)
 		c = va_arg(pfs->ap, int);
 	else
 		c = '%';
+	pfs->precision = -1;
 	pfs->vallen = 1;
 	if (pfs->width > 1)
 		pfs->count = pfs->width;
@@ -86,7 +87,7 @@ char	*convert_i(t_pfs *pfs)
 
 	if (pfs->zero_flag && pfs->min_flag)
 		pfs->zero_flag = 0;
-	num = va_arg(pfs->ap, long);
+	num = (long)va_arg(pfs->ap, int);
 	if (num < 0)
 	{
 		pfs->isneg = 1;

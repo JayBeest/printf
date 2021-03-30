@@ -26,7 +26,6 @@ t_pfs	*init_pfs(t_pfs *pfs, int reset)
 		pfs->vallen = 0;
 		pfs->isneg = 0;
 		pfs->min_flag = 0;
-		pfs->plus_flag = 0;
 		pfs->zero_flag = 0;
 		pfs->precision = -1;
 		pfs->width = -1;

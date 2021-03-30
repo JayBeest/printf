@@ -13,7 +13,7 @@
 #include "src/ft_printf.h"
 #include <stdio.h>
 
-int 	ft_printf(const char *format, ...);
+//int 	ft_printf(const char *format, ...) __attribute__ ( (format(printf, 1, 2)) );
 
 int	main(void)
 {
@@ -198,15 +198,26 @@ int	main(void)
 	rv2 = ft_printf("%4.p", ia);
 	printf("|-> rv: %d\n", rv2);
 
-	rv = printf("%p", NULL);
+	rv = printf("%0p", NULL);
 	printf("|-> rv: %d\n", rv);
-	rv2 = ft_printf("%p", NULL);
+	rv2 = ft_printf("%0p", NULL);
 	printf("|-> rv: %d\n", rv2);
 
 	rv = printf("%*p 42 == |%s|\n", -20, NULL, NULL);
 	printf("|-> rv: %d\n", rv);
 	rv2 = ft_printf("%*p 42 == |%s|\n", -20, NULL, NULL);
 	printf("|-> rv: %d\n", rv2);
+
+	rv = printf("%06.10%");
+	printf("|-> rv: %d\n", rv);
+	rv2 = ft_printf("%06.10%");
+	printf("|-> rv: %d\n", rv2);
+
+	rv = printf("%06.%");
+	printf("|-> rv: %d\n", rv);
+	rv2 = ft_printf("%06.%");
+	printf("|-> rv: %d\n", rv2);
+
 
 
 	return (0);

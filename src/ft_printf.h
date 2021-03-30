@@ -24,7 +24,6 @@ typedef struct s_pfs
 {
 	va_list	ap;
 	int		min_flag;
-	int		plus_flag;
 	int		zero_flag;
 	int		width;
 	int		star_width;
@@ -42,6 +41,7 @@ typedef char *(*t_convspec)(t_pfs *);
 
 // Printf
 
+int		ft_printf(const char *format, ...);
 t_pfs	*init_pfs(t_pfs *pfs, int reset);
 int		printf_converter(t_pfs *pfs);
 int		printf_parser(const char *s, t_pfs *pfs);

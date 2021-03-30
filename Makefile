@@ -11,7 +11,6 @@
 # **************************************************************************** #
 
 NAME = libftprintf.a
-LIB = libft
 PRINTF_FILES =	ft_printf.c \
 				ft_printf_utils.c \
 				ft_printf_converters_part1.c \
@@ -21,7 +20,7 @@ LIBFT = ./libft/libft.a
 HEADER_FILES = ft_printf.h
 SRC_PATH = ./src/
 O_FILES = $(PRINTF_FILES:%.c=$(SRC_PATH)%.o)
-CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS = #-Wall -Wextra -Werror# -g -fsanitize=address
 
 all: $(NAME)
 
