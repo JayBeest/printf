@@ -49,7 +49,7 @@ char	*convert_x(t_pfs *pfs)
 	rs = make_field(pfs);
 	if (!rs)
 		return (NULL);
-    if (pfs->precision == 0 && pfs->width < 1 && num == 0)
+	if (pfs->precision == 0 && pfs->width < 1 && num == 0)
     {
         pfs->count = 0;
         return (rs);
