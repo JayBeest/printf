@@ -25,7 +25,7 @@ char	*convert_c(t_pfs *pfs)
 	pfs->vallen = 1;
 	if (pfs->width > 1)
 		pfs->count = pfs->width;
-	rs = make_field(pfs);
+	rs = make_field(pfs, 1);
 	if (!rs)
 		return (NULL);
 	if (pfs->min_flag == 1)
@@ -46,14 +46,11 @@ char	*convert_x(t_pfs *pfs)
 	if (pfs->spec == 'X')
 		ft_strtoupper(temprs);
 	pfs->vallen = ft_strlen(temprs);
-	rs = make_field(pfs);
+	rs = make_field(pfs, num);
 	if (!rs)
 		return (NULL);
 	if (pfs->precision == 0 && pfs->width < 1 && num == 0)
-	{
-		pfs->count = 0;
 		return (rs);
-	}
 	if (pfs->min_flag)
 		paste_min_flag(pfs, rs, temprs);
 	else
@@ -70,14 +67,11 @@ char	*convert_u(t_pfs *pfs)
 	num = va_arg(pfs->ap, unsigned);
 	ft_itoba_nomalloc(num, 10, temprs);
 	pfs->vallen = ft_strlen(temprs);
-	rs = make_field(pfs);
+	rs = make_field(pfs, num);
 	if (!rs)
 		return (NULL);
 	if (pfs->precision == 0 && pfs->width < 1 && num == 0)
-	{
-		pfs->count = 0;
 		return (rs);
-	}
 	if (pfs->min_flag)
 		paste_min_flag(pfs, rs, temprs);
 	else
@@ -101,14 +95,11 @@ char	*convert_i(t_pfs *pfs)
 	}
 	ft_itoba_nomalloc(num, 10, temprs);
 	pfs->vallen = ft_strlen(temprs);
-	rs = make_field(pfs);
+	rs = make_field(pfs, num);
 	if (!rs)
 		return (NULL);
 	if (pfs->precision == 0 && pfs->width < 1 && num == 0)
-	{
-		pfs->count = 0;
 		return (rs);
-	}
 	if (pfs->min_flag)
 		paste_min_flag(pfs, rs, temprs);
 	else
@@ -126,7 +117,7 @@ char	*convert_p(t_pfs *pfs)
 	num = va_arg(pfs->ap, unsigned long);
 	ft_itoba_nomalloc(num, 16, temprs);
 	pfs->vallen = ft_strlen(temprs);
-	rs = make_field(pfs);
+	rs = make_field(pfs, 1);
 	if (!rs)
 		return (NULL);
 	if (pfs->min_flag && pfs->width > pfs->vallen + 2)

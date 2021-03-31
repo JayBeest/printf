@@ -43,7 +43,7 @@ void 	add_pointer_space(t_pfs *pfs)
 		pfs->count += 2;
 }
 
-char 	*make_field(t_pfs *pfs)
+char 	*make_field(t_pfs *pfs, long num)
 {
 	char	*rs;
 
@@ -67,6 +67,8 @@ char 	*make_field(t_pfs *pfs)
 		ft_memset(rs, ' ', pfs->count);
 	if (pfs->spec == 'p')
 		add_pointer(rs, pfs);
+	if (pfs->precision == 0 && pfs->width < 1 && num == 0)
+		pfs->count = 0;
 	return (rs);
 }
 

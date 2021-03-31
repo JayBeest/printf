@@ -25,7 +25,7 @@ char	*convert_s(t_pfs *pfs)
 	pfs->vallen = ft_strlen(temp);
 	if (pfs->precision >= 0 && pfs->vallen && pfs->vallen >= pfs->precision)
 		pfs->vallen = pfs->precision;
-	rs = make_field(pfs);
+	rs = make_field(pfs, 1);
 	if (!rs)
 		return (NULL);
 	if (pfs->min_flag)

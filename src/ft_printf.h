@@ -62,7 +62,7 @@ char	*convert_p(t_pfs *pfs);
 
 // Utils
 
-char	*make_field(t_pfs *pfs);
+char	*make_field(t_pfs *pfs, long num);
 void	add_pointer(char *rs, t_pfs *pfs);
 void	paste_min_flag(t_pfs *pfs, char *rs, char *temprs);
 void	paste_nomin_flag(t_pfs *pfs, char *rs, char *temprs);
