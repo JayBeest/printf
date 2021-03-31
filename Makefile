@@ -6,7 +6,7 @@
 #    By: jcorneli <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/02/06 23:29:14 by jcorneli      #+#    #+#                  #
-#    Updated: 2021/03/22 22:39:42 by jcorneli      ########   odam.nl          #
+#    Updated: 2021/03/30 22:18:54 by jcorneli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,12 @@ all: $(NAME)
 $(NAME): $(O_FILES)
 	$(MAKE) -C ./libft
 	cp $(LIBFT) $@
-	$(AR) -r $@ $^
+	@echo ar: adding ft_printf to libftprintf.a
+	@$(AR) -r $@ $^
 
 %.o: %.c $(HEADER_FILES)
-	$(CC) -c $(CFLAGS) -o $@ $<
+	@echo Compiling $@
+	@$(CC) -c $(CFLAGS) -o $@ $<
 
 test: $(NAME)
 	clear

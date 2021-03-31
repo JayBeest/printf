@@ -6,7 +6,7 @@
 #    By: jcorneli <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/22 22:40:35 by jcorneli      #+#    #+#                  #
-#    Updated: 2021/03/29 10:19:28 by jcorneli      ########   odam.nl          #
+#    Updated: 2021/03/30 22:16:15 by jcorneli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,11 +68,11 @@ O_FILES = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(O_FILES)
-	$(AR) -r $@ $^
+	@$(AR) -r $@ $^
 
 %.o: %.c $(HEADER_FILES)
 	@echo Compiling $@
-	$(CC) -c $(CFLAGS) -o $@ $<
+	@$(CC) -c $(CFLAGS) -o $@ $<
 
 clean:
 	rm -f $(O_FILES)
