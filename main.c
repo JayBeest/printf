@@ -178,45 +178,50 @@ int	main(void)
 //	rv2 = ft_printf("%-8.d", 0);
 //	printf("|-> rv: %d\n", rv2);
 
-	rv = printf("%2.d", 0);
-	printf("|-> rv: %d\n", rv);
-	rv2 = ft_printf("%2.d", 0);
-	printf("|-> rv: %d\n", rv2);
+//	rv = printf("%2.d", 0);
+//	printf("|-> rv: %d\n", rv);
+//	rv2 = ft_printf("%2.d", 0);
+//	printf("|-> rv: %d\n", rv2);
+//
+//	rv = printf("%*s", -32, "abc");
+//	printf("|-> rv: %d\n", rv);
+//	rv2 = ft_printf("%*s", -32, "abc");
+//	printf("|-> rv: %d\n", rv2);
+//
+//	rv = printf("%% *.5i 42 == |% *.5i|			", 4, 42);
+//	printf("|-> rv: %d\n", rv);
+//	rv2 = ft_printf("%% *.5i 42 == |% *.5i|			", 4, 42);
+//	printf("|-> rv: %d\n", rv2);
+//
+//	rv = printf("%4.p", ia);
+//	printf("|-> rv: %d\n", rv);
+//	rv2 = ft_printf("%4.p", ia);
+//	printf("|-> rv: %d\n", rv2);
+//
+//	rv = printf("%0p", NULL);
+//	printf("|-> rv: %d\n", rv);
+//	rv2 = ft_printf("%0p", NULL);
+//	printf("|-> rv: %d\n", rv2);
+//
+//	rv = printf("%*p 42 == |%s|\n", -20, NULL, NULL);
+//	printf("|-> rv: %d\n", rv);
+//	rv2 = ft_printf("%*p 42 == |%s|\n", -20, NULL, NULL);
+//	printf("|-> rv: %d\n", rv2);
+//
+//	rv = printf("%06.10%");
+//	printf("|-> rv: %d\n", rv);
+//	rv2 = ft_printf("%06.10%");
+//	printf("|-> rv: %d\n", rv2);
+//
+//	rv = printf("%06.%");
+//	printf("|-> rv: %d\n", rv);
+//	rv2 = ft_printf("%06.%");
+//	printf("|-> rv: %d\n", rv2);
 
-	rv = printf("%*s", -32, "abc");
-	printf("|-> rv: %d\n", rv);
-	rv2 = ft_printf("%*s", -32, "abc");
-	printf("|-> rv: %d\n", rv2);
-
-	rv = printf("%% *.5i 42 == |% *.5i|			", 4, 42);
-	printf("|-> rv: %d\n", rv);
-	rv2 = ft_printf("%% *.5i 42 == |% *.5i|			", 4, 42);
-	printf("|-> rv: %d\n", rv2);
-
-	rv = printf("%4.p", ia);
-	printf("|-> rv: %d\n", rv);
-	rv2 = ft_printf("%4.p", ia);
-	printf("|-> rv: %d\n", rv2);
-
-	rv = printf("%0p", NULL);
-	printf("|-> rv: %d\n", rv);
-	rv2 = ft_printf("%0p", NULL);
-	printf("|-> rv: %d\n", rv2);
-
-	rv = printf("%*p 42 == |%s|\n", -20, NULL, NULL);
-	printf("|-> rv: %d\n", rv);
-	rv2 = ft_printf("%*p 42 == |%s|\n", -20, NULL, NULL);
-	printf("|-> rv: %d\n", rv2);
-
-	rv = printf("%06.10%");
-	printf("|-> rv: %d\n", rv);
-	rv2 = ft_printf("%06.10%");
-	printf("|-> rv: %d\n", rv2);
-
-	rv = printf("%06.%");
-	printf("|-> rv: %d\n", rv);
-	rv2 = ft_printf("%06.%");
-	printf("|-> rv: %d\n", rv2);
+    rv = printf("%.i", 0);
+	printf("|-> rv-ori: %d\n", rv);
+	rv2 = ft_printf("%.i", 0);
+	printf("|-> rv-pft: %d\n", rv2);
 
 
 

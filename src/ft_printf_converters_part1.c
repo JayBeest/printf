@@ -49,8 +49,11 @@ char	*convert_x(t_pfs *pfs)
 	rs = make_field(pfs);
 	if (!rs)
 		return (NULL);
-	if (pfs->precision == 0 && pfs->width < 1 && num == 0)
-		pfs->count = 0;
+    if (pfs->precision == 0 && pfs->width < 1 && num == 0)
+    {
+        pfs->count = 0;
+        return (rs);
+    }
 	if (pfs->min_flag)
 		paste_min_flag(pfs, rs, temprs);
 	else
@@ -70,8 +73,11 @@ char	*convert_u(t_pfs *pfs)
 	rs = make_field(pfs);
 	if (!rs)
 		return (NULL);
-	if (pfs->precision == 0 && pfs->width < 1 && num == 0)
-		pfs->count = 0;
+    if (pfs->precision == 0 && pfs->width < 1 && num == 0)
+    {
+        pfs->count = 0;
+        return (rs);
+    }
 	if (pfs->min_flag)
 		paste_min_flag(pfs, rs, temprs);
 	else
@@ -99,7 +105,10 @@ char	*convert_i(t_pfs *pfs)
 	if (!rs)
 		return (NULL);
 	if (pfs->precision == 0 && pfs->width < 1 && num == 0)
+    {
 		pfs->count = 0;
+	    return (rs);
+    }
 	if (pfs->min_flag)
 		paste_min_flag(pfs, rs, temprs);
 	else

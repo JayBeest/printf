@@ -59,7 +59,7 @@ SRC =	ft_atoi.c \
 		ft_substr.c \
 		ft_tolower.c
 
-CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g
+CFLAGS = -g #-Wall -Wextra -Werror -g #-fsanitize=address
 HEADER_FILES = libft.h
 CC = clang
 
