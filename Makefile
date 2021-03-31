@@ -20,7 +20,7 @@ LIBFT = ./libft/libft.a
 HEADER_FILES = ft_printf.h
 SRC_PATH = ./src/
 O_FILES = $(PRINTF_FILES:%.c=$(SRC_PATH)%.o)
-CFLAGS = -g #-fsanitize=address #-Wall -Wextra -Werror
+CFLAGS = -g #a-fsanitize=address #-Wall -Wextra -Werror
 
 all: $(NAME)
 
