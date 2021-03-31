@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_itoba.c                                         :+:    :+:            */
+/*   ft_itoba_nomalloc.c                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jcorneli <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
@@ -30,7 +30,7 @@ static char	*getstr(long long num, int base, char *s)
 	return (s + 1);
 }
 
-void		ft_itoba_nomalloc(long long num, int base, char *rs)
+void	ft_itoba_nomalloc(long long num, int base, char *rs)
 {
 	if (base < 2 || base > 36)
 		rs[0] = '\0';

@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-static int			inset(const char *set, int c)
+static int	inset(const char *set, int c)
 {
 	while (*set)
 	{
@@ -36,7 +36,7 @@ static const char	*get_begin(char const *s, char const *set)
 	return (s);
 }
 
-static int			get_endlen(char const *s, char const *set, const size_t len)
+static int	get_endlen(char const *s, char const *set, const size_t len)
 {
 	int		i;
 	size_t	index;
@@ -56,7 +56,7 @@ static int			get_endlen(char const *s, char const *set, const size_t len)
 	return (i);
 }
 
-char				*ft_strtrim(char const *s, char const *set)
+char	*ft_strtrim(char const *s, char const *set)
 {
 	size_t		len;
 	char		*str;

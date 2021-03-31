@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
 void	ft_strtolower(char *str)
 {
@@ -20,4 +20,3 @@ void	ft_strtolower(char *str)
 		str++;
 	}
 }
-

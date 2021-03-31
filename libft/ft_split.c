@@ -40,7 +40,7 @@ static size_t	clean_count(char *temps, char c)
 	return (count);
 }
 
-static char		**free_split(char **split, size_t jindex)
+static char	**free_split(char **split, size_t jindex)
 {
 	while (jindex != 0)
 	{
@@ -52,7 +52,7 @@ static char		**free_split(char **split, size_t jindex)
 	return (NULL);
 }
 
-static char		**make_split(char **split, char *s, size_t strcounter)
+static char	**make_split(char **split, char *s, size_t strcounter)
 {
 	size_t	i;
 	size_t	j;
@@ -78,7 +78,7 @@ static char		**make_split(char **split, char *s, size_t strcounter)
 	return (split);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**split;
 	char	*temps;

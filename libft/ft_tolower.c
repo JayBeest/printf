@@ -17,7 +17,7 @@ static int	isupper(int c)
 	return (0);
 }
 
-int			ft_tolower(int c)
+int	ft_tolower(int c)
 {
 	if (isupper(c))
 		return (c + 32);

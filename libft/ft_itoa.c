@@ -27,7 +27,7 @@ static char	*getstr(long num, char *s)
 	return (s + 1);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	long	num;
 	char	temp[13];

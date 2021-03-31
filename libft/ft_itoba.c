@@ -32,7 +32,7 @@ static char	*getstr(long long num, int base, int iscap, char *s)
 	return (s + 1);
 }
 
-char		*ft_itoba(long long num, int base, int iscap)
+char	*ft_itoba(long long num, int base, int iscap)
 {
 	char	temp[100];
 	char	*a;

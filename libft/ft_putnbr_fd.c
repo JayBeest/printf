@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <unistd.h>
 
-static char		*getstr(long num, char *s)
+static char	*getstr(long num, char *s)
 {
 	if (num < 0)
 	{
@@ -28,7 +28,7 @@ static char		*getstr(long num, char *s)
 	return (s + 1);
 }
 
-void			ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	long	num;
 	char	temp[13];

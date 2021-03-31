@@ -1,26 +1,38 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: jcorneli <marvin@codam.nl>                   +#+                      #
+#                                                    +#+                       #
+#    Created: 2021/02/06 23:29:14 by jcorneli      #+#    #+#                  #
+#    Updated: 2021/03/30 22:18:54 by jcorneli      ########   odam.nl          #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libftprintf.a
-LIB = libft
-PRINTF_FILES = ft_printf.c ft_printf_utils.c ft_printf_converters.c ft_printf_checks.c #main.c
+PRINTF_FILES =	ft_printf.c \
+				ft_printf_utils.c \
+				ft_printf_converters_part1.c \
+				ft_printf_converters_part2.c \
+				ft_printf_parsers.c
 LIBFT = ./libft/libft.a
 HEADER_FILES = ft_printf.h
 SRC_PATH = ./src/
 O_FILES = $(PRINTF_FILES:%.c=$(SRC_PATH)%.o)
-CFLAGS =  -g #-Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = #-Wall -Wextra -Werror# -g -fsanitize=address
 
 all: $(NAME)
 
-#$(NAME): $(O_FILES)
-#	$(MAKE) -C ./libft
-#	cp $(LIBS) $@
-#	ar -r $@ $^
-
 $(NAME): $(O_FILES)
 	$(MAKE) -C ./libft
-	cp $(LIBFT) $(NAME)
-	$(AR) -r $@ $^
+	cp $(LIBFT) $@
+	@echo ar: adding ft_printf to libftprintf.a
+	@$(AR) -r $@ $^
 
-%.o: %.c $(HEADER_FILES) 
-	$(CC) -c $(CFLAGS) -o $@ $<
+%.o: %.c $(HEADER_FILES)
+	@echo Compiling $@
+	@$(CC) -c $(CFLAGS) -o $@ $<
 
 test: $(NAME)
 	clear
@@ -30,7 +42,7 @@ test: $(NAME)
 clion: $(NAME)
 	$(CC) $(CFLAGS) $(NAME) main.c
 
-clean: 
+clean:
 	rm -f $(O_FILES)
 	$(MAKE) -C ./libft clean
 

@@ -17,10 +17,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void		*retptr;
 
-	if (nmemb != 0 && ((size_t)-1 / nmemb < size))
-		return (NULL);
-	if (nmemb * size > ((size_t)-1))
-		return (NULL);
 	if (nmemb == 0 || size == 0)
 	{
 		nmemb = 1;
