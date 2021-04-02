@@ -1,2 +1,2 @@
 # printf
-rewrite part of printf
+rewrite part of printf, functional but wip
