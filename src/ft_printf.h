@@ -23,9 +23,9 @@
 typedef struct s_pfs
 {
 	va_list	ap;
-	char	spec;
 	int		precision;
 	int		width;
+	char	spec;
 	int		count;
 	int		nest_i;
 	int		vallen;

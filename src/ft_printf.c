@@ -23,7 +23,7 @@ t_pfs	*init_pfs(t_pfs *pfs, int reset)
 	{
 		pfs->precision = -1;
 		pfs->width = -1;
-		ft_bzero(&pfs->count, 28);
+		ft_bzero(&pfs->spec, 29);
 		return (pfs);
 	}
 	return (NULL);
@@ -31,20 +31,20 @@ t_pfs	*init_pfs(t_pfs *pfs, int reset)
 
 int	printf_converter(t_pfs *pfs)
 {
-	static const t_convspec	funptr[126] = {
-			['s'] = &convert_s,
-			['c'] = convert_c,
-			['%'] = &convert_c,
-			['i'] = convert_i,
-			['u'] = &convert_u,
-			['p'] = convert_p,
-			['d'] = &convert_i,
-			['x'] = convert_x,
-			['X'] = &convert_x
+	static const t_convspec	funptr[94] = {
+			['s' - 32] = &convert_s,
+			['c' - 32] = convert_c,
+			['%' - 32] = &convert_c,
+			['i' - 32] = convert_i,
+			['u' - 32] = &convert_u,
+			['p' - 32] = convert_p,
+			['d' - 32] = &convert_i,
+			['x' - 32] = convert_x,
+			['X' - 32] = &convert_x
 	};
 	char					*converted;
 
-	converted = funptr[(int)pfs->spec](pfs);
+	converted = funptr[(int)pfs->spec - 32](pfs);
 	if (!converted)
 		return (0);
 	write(1, converted, pfs->count);
