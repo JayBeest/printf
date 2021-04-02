@@ -6,7 +6,7 @@
 #    By: jcorneli <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/02/06 23:29:14 by jcorneli      #+#    #+#                  #
-#    Updated: 2021/03/30 22:18:54 by jcorneli      ########   odam.nl          #
+#    Updated: 2021/03/31 21:45:23 by jcorneli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIBFT = ./libft/libft.a
 HEADER_FILES = ft_printf.h
 SRC_PATH = ./src/
 O_FILES = $(PRINTF_FILES:%.c=$(SRC_PATH)%.o)
-CFLAGS = -g #a-fsanitize=address #-Wall -Wextra -Werror
+CFLAGS = -g #-Wall -Wextra -Werror
 
 all: $(NAME)
 

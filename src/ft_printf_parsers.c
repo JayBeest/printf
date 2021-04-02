@@ -6,7 +6,7 @@
 /*   By: jcorneli <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 16:25:25 by jcorneli      #+#    #+#                 */
-/*   Updated: 2021/03/22 22:42:59 by jcorneli      ########   odam.nl         */
+/*   Updated: 2021/03/31 21:53:40 by jcorneli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,14 @@ void 	check_width(const char *format, t_pfs *pfs)
 			pfs->width = va_arg(pfs->ap, int);
 			pfs->star_width = 1;
 			i++;
-			break ;
 		}
 		else if (ft_isdigit(*format))
 		{
 			while (ft_isdigit(format[i]))
 				i++;
 			pfs->width = ft_atoi((char *)format);
-			break ;
 		}
-		else
-			break ;
+		break ;
 	}
 	pfs->nest_i += i;
 }

@@ -6,7 +6,7 @@
 /*   By: jcorneli <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/02/03 16:25:25 by jcorneli      #+#    #+#                 */
-/*   Updated: 2021/03/22 22:41:06 by jcorneli      ########   odam.nl         */
+/*   Updated: 2021/03/31 21:53:20 by jcorneli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,9 @@ t_pfs	*init_pfs(t_pfs *pfs, int reset)
 		pfs = (t_pfs *) malloc(sizeof(t_pfs));
 	if (pfs)
 	{
-		pfs->count = 0;
-		pfs->nest_i = 0;
-		pfs->vallen = 0;
-		pfs->isneg = 0;
-		pfs->min_flag = 0;
-		pfs->zero_flag = 0;
 		pfs->precision = -1;
 		pfs->width = -1;
-		pfs->star_width = 0;
+		ft_bzero(&pfs->count, 28);
 		return (pfs);
 	}
 	return (NULL);
@@ -37,7 +31,7 @@ t_pfs	*init_pfs(t_pfs *pfs, int reset)
 
 int	printf_converter(t_pfs *pfs)
 {
-	static const t_convspec	funptr[255] = {
+	static const t_convspec	funptr[126] = {
 			['s'] = &convert_s,
 			['c'] = convert_c,
 			['%'] = &convert_c,
@@ -116,7 +110,7 @@ int 	ft_printf(const char *format, ...)
 
 	pfs = NULL;
 	pfs = init_pfs(pfs, 0);
-	if (!pfs)
+	if (!pfs || !format)
 		return (-1);
 	va_start(pfs->ap, format);
 	rv = write_count(format, pfs);

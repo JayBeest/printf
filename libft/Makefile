@@ -6,7 +6,7 @@
 #    By: jcorneli <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/03/22 22:40:35 by jcorneli      #+#    #+#                  #
-#    Updated: 2021/03/30 22:16:15 by jcorneli      ########   odam.nl          #
+#    Updated: 2021/03/31 21:46:06 by jcorneli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ SRC =	ft_atoi.c \
 		ft_substr.c \
 		ft_tolower.c
 
-CFLAGS = -g #-Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS = -g #-Wall -Wextra -Werror
 HEADER_FILES = libft.h
 CC = clang
 
